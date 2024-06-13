@@ -18,7 +18,6 @@
 
 <details>
   <summary>  
-  
   #### What to do if new life-history parameters such as L∞ are found; is there a need to recalculate things back in time?
   
   </summary>
@@ -27,7 +26,6 @@
 </details>
 <details>
   <summary>  
-
   #### Which life-history parameters (or strategies) matter when the von Bertalanffy growth model might not be appropriate
 
   </summary>
