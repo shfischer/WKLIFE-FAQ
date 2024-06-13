@@ -18,7 +18,8 @@
 
 <details>
   <summary>  
-    #### What to do if new life-history parameters such as L∞ are found; is there a need to recalculate things back in time?
+  
+  #### What to do if new life-history parameters such as L∞ are found; is there a need to recalculate things back in time?
   
   </summary>
   
@@ -28,7 +29,9 @@
 
 <details>
   <summary>  
-    #### Which life-history parameters (or strategies) matter when the von Bertalanffy growth model might not be appropriate
+
+  #### Which life-history parameters (or strategies) matter when the von Bertalanffy growth model might not be appropriate
+
   </summary>
 
   * The individual growth rate (von Bertalanffy k) is only used to decide which method or multiplier is used and a rough estimate is enough, e.g. is k below 0.2/year or not. The only other growth parameter used for the rfb rule is the as-ymptotic length L∞, which is used in the calculation of the reference length LF=M but the actual shape of the growth curve is less important.
