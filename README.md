@@ -23,7 +23,7 @@ $$
 A_(y+1)=A_y  r f b x=A_y  r L_(y-1)/L_(F=M)  b x=A_y  r L_(y-1)/(〖L'〗_(F=M)/x) b=A_y  r L_(y-1)/〖L'〗_(F=M)  b
 $$
 
-where $$A_(y+1)$$ is the new catch advice, $$A_y$$ the previous catch advice, $r$, $f$, and $b$ the components of the rfb rule, $x$ the multiplier, $L_(y-1)$ the mean catch length, and $L_(F=M)$ the MSY proxy reference length.
+where $A_{y+1}$ is the new catch advice, $A_y$ the previous catch advice, $r$, $f$, and $b$ the components of the rfb rule, $x$ the multiplier, $L_{y-1}$ the mean catch length, and $L_{F=M}$ the MSY proxy reference length.
 
 Response copied from WKLIFE XI report (ICES, 2023, Section 2.2.8, page 28):
 * ICES. 2023. Eleventh Workshop on the Development of Quantitative Assessment Methodologies based on LIFE-history traits, exploitation characteristics, and other relevant parameters for data-limited stocks (WKLIFE XI). ICES Scientific Reports. 5:21. 74 pp. (https://doi.org/10.17895/ices.pub.22140260).
