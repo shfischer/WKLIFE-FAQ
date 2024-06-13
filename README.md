@@ -1,4 +1,10 @@
-# faq-test
+# WKLIFE Frequently Asked Questions (FAQ) on the ICES data-limited methods
+
+This page contains Frequently Asked Questions (FAQ) on the ICES data-limited methods and the responses from WKLIFE.
+
+So far, the questions and responses are copied from the ICES WKLIFE XII report (Annex 6):
+
+> ICES. 2023. Workshop on the Development of Quantitative Assessment Methodologies based on Life-history traits, exploitation characteristics, and other relevant parameters for data-limited stocks (WKLIFE XII). ICES Scientific Reports. 5:103. 111 pp. (https://doi.org/10.17895/ices.pub.24581343).
 
 ## Category 2
 
@@ -243,7 +249,7 @@ _References_
 * ICES. 2020a. Tenth Workshop on the Development of Quantitative Assessment Methodologies based on LIFE-history traits, exploitation characteristics, and other relevant parameters for data-limited stocks (WKLIFE X). ICES Scientific reports, 2:98, 72 pp. (https://doi.org/10.17895/ices.pub.5985).
 * ICES. 2022. ICES technical guidance for harvest control rules and stock assessments for stocks in categories 2 and 3. In Report of ICES advisory committee, 2022. ICES advice 2022, section 16.4.11. 20 pp. (https://doi.org/10.17895/ices.advice.19801564).
 * ICES. 2023a. Eleventh Workshop on the Development of Quantitative Assessment Methodologies based on LIFE-history traits, exploitation characteristics, and other relevant parameters for data-limited stocks (WKLIFE XI). ICES Scientific Reports. 5:21. 74 pp. (https://doi.org/10.17895/ices.pub.22140260).
-* ICES. 2023b. Workshop on the Development of Quantitative Assessment Methodologies based on Life-history traits, exploitation characteristics, and other relevant parameters for data-limited stocks (WKLIFEXII). ICES Scientific Reports. 5:103. 111 pp. (https://doi.org/10.17895/ices.pub.24581343).
+* ICES. 2023b. Workshop on the Development of Quantitative Assessment Methodologies based on Life-history traits, exploitation characteristics, and other relevant parameters for data-limited stocks (WKLIFE XII). ICES Scientific Reports. 5:103. 111 pp. (https://doi.org/10.17895/ices.pub.24581343).
 
 _Question source: Scottish Fishermen's Federation for WKLIFE XII 2023_
 
