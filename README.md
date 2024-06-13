@@ -26,7 +26,6 @@
   * There is no need to annually update life-history parameters. If new growth pa-rameters are available and these are substantially different from previous esti-mates, these should be used. To ensure consistency in the calculation, derived values such as the reference length LF=M should also be updated and the historical mean catch length compared to this new reference length. Growth parameters and derived metrics such as the reference length should be periodically reevalu-ated, e.g. every 3-5 years, following a similar schedule to benchmarks for Catego-ry 1 data-rich stocks, but kept constant in-between unless there is compelling new evidence for a change.
 
 </details>
-
 <details>
   <summary>  
 
