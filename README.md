@@ -15,12 +15,7 @@
 
 There is sometimes the incorrect perception that the multiplier of the rfb and chr rules continuously decreases the catch advice over time. The multiplier of the empirical harvest control rules is a tuning parameter that ensures that the advice follows the ICES precautionary approach. The components of the harvest control rules are multiplicative, this means that the multiplier can be thought of as adjusting the target of the harvest control rules, i.e. the reference length in component f of the rfb rule and the target harvest rate of the chr rule. This principle is illustrated in the following equation for the rfb rule:
 
-$$A_{y+1} = A_y\ r\ f\ b\ x = A_y\ r\ \frac{L_{y-1}}{L_{F=M}}$$
-
-
-$$
-A_(y+1)=A_y  r f b x=A_y  r L_(y-1)/L_(F=M)  b x=A_y  r L_(y-1)/(〖L'〗_(F=M)/x) b=A_y  r L_(y-1)/〖L'〗_(F=M)  b
-$$
+$$A_{y+1} = A_y\ r\ f\ b\ x = A_y\ r\ \frac{L_{y-1}}{L_{F=M}}\ b\ x = A_y\ r\ \frac{L_{y-1}}{L_{F=M}/x}\ b = A_y\ r\ \frac{L_{y-1}}{L'_{F=M}}\ b$$
 
 where $A_{y+1}$ is the new catch advice, $A_y$ the previous catch advice, $r$, $f$, and $b$ the components of the rfb rule, $x$ the multiplier, $L_{y-1}$ the mean catch length, and $L_{F=M}$ the MSY proxy reference length.
 
