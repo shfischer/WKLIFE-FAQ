@@ -22,6 +22,8 @@ where $A_{y+1}$ is the new catch advice, $A_y$ the previous catch advice, $r$, $
 Response copied from WKLIFE XI report (ICES, 2023, Section 2.2.8, page 28):
 * ICES. 2023. Eleventh Workshop on the Development of Quantitative Assessment Methodologies based on LIFE-history traits, exploitation characteristics, and other relevant parameters for data-limited stocks (WKLIFE XI). ICES Scientific Reports. 5:21. 74 pp. (https://doi.org/10.17895/ices.pub.22140260).
 
+_Question source: WGDEEP for WKLIFE XI 2023_
+
 </details>
 
 <details>
