@@ -44,6 +44,10 @@ TODO
 
 </details>
 
+<details>
+    
+<summary>
+
 #### Changes to the reference values over time
 
 </summary>
@@ -55,6 +59,7 @@ _Response from WKLIFE XIII 2024_
 </details>
 
 <details>
+    
 <summary>  
     
 #### Changes to the biomass index trigger ($I_\text{trigger}$) value over time
