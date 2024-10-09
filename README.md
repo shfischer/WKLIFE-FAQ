@@ -52,7 +52,7 @@ TODO
 
 </summary>
 
-The rfb, rb, and chr rules include reference values such as a trigger value for the biomass index ($I_\text{trigger}$), the length at first capture ($L_c$), a length reference value ($L_{F=M}$), or the target harvest rate $F_\text{proxy,MSY}$. In general, these refernce values should be set when the methods are applied for the first time and should not be updated for every application. The values could be periodically re-evaluated every few years, similar to benchmarks for data-rich stocks.
+The rfb, rb, and chr rules include reference values such as a trigger value for the biomass index ($I_\text{trigger}$), the length at first capture ($L_c$), a length reference value ($L_{F=M}$), or the target harvest rate $F_\text{proxy,MSY}$. In general, these reference values should be set when the methods are applied for the first time and should not be updated for every application. The values could be periodically re-evaluated every few years, similar to benchmarks for data-rich stocks. However, if the entire biomass index series is updated for a new application, for example by using delta gam modelled index, the reference values should be updated accordingly (while using the same historical period for $F_\text{proxy,MSY}$ and ($I_\text{trigger}$)).
 
 _Response from WKLIFE XIII 2024_
 
@@ -120,9 +120,9 @@ _Response from WKLIFE XIII 2024_
 
 There is sometimes the incorrect perception that the multiplier of the rfb and chr rules continuously decreases the catch advice over time. The multiplier of the empirical harvest control rules is a tuning parameter that ensures that the advice follows the ICES precautionary approach. The components of the harvest control rules are multiplicative, this means that the multiplier can be thought of as adjusting the target of the harvest control rules, i.e. the reference length in component f of the rfb rule and the target harvest rate of the chr rule. This principle is illustrated in the following equation for the rfb rule:
 
-$$A_{y+1} = A_y\ r\ f\ b\ x = A_y\ r\ \frac{L_{y-1}}{L_{F=M}}\ b\ x = A_y\ r\ \frac{L_{y-1}}{L_{F=M}/x}\ b = A_y\ r\ \frac{L_{y-1}}{L'_{F=M}}\ b$$
+$$A_{y+1} = A_y\ r\ f\ b\ m = A_y\ r\ \frac{L_{y-1}}{L_{F=M}}\ b\ m = A_y\ r\ \frac{L_{y-1}}{L_{F=M}/m}\ b = A_y\ r\ \frac{L_{y-1}}{L'_{F=M}}\ b$$
 
-where $A_{y+1}$ is the new catch advice, $A_y$ the previous catch advice, $r$, $f$, and $b$ the components of the rfb rule, $x$ the multiplier, $L_{y-1}$ the mean catch length, and $L_{F=M}$ the MSY proxy reference length.
+where $A_{y+1}$ is the new catch advice, $A_y$ is the previous catch advice, $r$, $f$, $b$ and the multiplier $m$ are the components of the rfb rule,  the multiplier, $L_{y-1}$ the mean catch length, and $L_{F=M}$ the MSY proxy reference length.
 
 Response copied from WKLIFE XI report (ICES, 2023, Section 2.2.8, page 28): 
 * ICES. 2023. Eleventh Workshop on the Development of Quantitative Assessment Methodologies based on LIFE-history traits, exploitation characteristics, and other relevant parameters for data-limited stocks (WKLIFE XI). ICES Scientific Reports. 5:21. 74 pp. (<https://doi.org/10.17895/ices.pub.22140260>).
@@ -167,7 +167,7 @@ The previous 2 over 3 rule calculated catch advice based on the trend from a bio
 
 </summary>
 
-There is no need to annually update life-history parameters. If new growth pa-rameters are available and these are substantially different from previous esti-mates, these should be used. To ensure consistency in the calculation, derived values such as the reference length LF=M should also be updated and the historical mean catch length compared to this new reference length. Growth parameters and derived metrics such as the reference length should be periodically reevalu-ated, e.g. every 3-5 years, following a similar schedule to benchmarks for Catego-ry 1 data-rich stocks, but kept constant in-between unless there is compelling new evidence for a change.
+There is no need to annually update life-history parameters. If new growth pa-rameters are available and these are substantially different from previous esti-mates, these new ones should be used. To ensure consistency in the calculation, derived values such as the reference length LF=M should also be updated and the historical mean catch length compared to this new reference length. Growth parameters and derived metrics such as the reference length should be periodically reevalu-ated, e.g. every 3-5 years, following a similar schedule to benchmarks for Catego-ry 1 data-rich stocks, but kept constant in-between unless there is compelling new evidence for a change.
 
 *Question source: WGDEEP for WKLIFE XII 2023*
 
@@ -223,7 +223,7 @@ The assumption of $M/k=1.5$ is solely used for a simple calculation of the refer
 
 $$L_{F=γM,k=θM} = \frac{\theta L_\infty + L_c \(\gamma + 1\)}{\theta + \gamma +1}$$
 
-where $\gamma$ links the natural mortality $M$ to fishing mortality $F$ as the proxy for MSY, $\theta$ links the von Bertlanffy $k$ to $M$, $L_\infty$ is the asymptotic length and $L_c$ is the length at first capture.
+where $\gamma$ links the natural mortality $M$ to fishing mortality $F$ as the proxy for MSY (set to 1 for $L_{F=M}$), $\theta$ links the von Bertlanffy $k$ to $M$, $L_\infty$ is the asymptotic length and $L_c$ is the length at first capture.
 
 The function for the calculation of the reference length in the `cat3advice` R package (`Lref()`) includes an argument (`Mk`) to change the $M/k$ ratio to any user-defined value.
 
@@ -271,7 +271,7 @@ The ICES technical guidelines specify that only length classes above $L_c$ shoul
 
 </summary>
 
-Some work on this issue was presented at WKLIFE XII (ICES, 2023). The conclusion was that it might be possible to use survey length data if no or insufficient (commercial) length data are available. The length at first capture $L_c$ should still be estimated from catch data because the $L_c$ from survey data might be too low and bias the reference length $L_{F=M}$.
+Some work on this issue was presented at WKLIFE XII (ICES, 2023). The conclusion was that it might be possible to use survey length data as a proxy if no or insufficient (commercial) length data are available. The length at first capture $L_c$ should still be estimated from catch data to account for fisheries selectivity because the $L_c$ from survey data might be too low and bias the reference length $L_{F=M}$ (which is on the assumption of knife-edged fisheries selectivity).
 
 *References* 
 
