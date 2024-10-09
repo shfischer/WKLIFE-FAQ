@@ -221,7 +221,7 @@ There is no need to annually update life-history parameters. If new growth pa-ra
 
 The assumption of $M/k=1.5$ is solely used for a simple calculation of the reference length $L_{F=M}$. This simplification of reality was shown to be appropriate in simulation testing even if the reality (operating model) was different and the parameterisation of the rfb rule with its multipliers accounts for potential deviations. Deviations from $M/k=1.5$ are possible following Jardim et al. (2015; Appendix A):
 
-$$L_{F=γM,k=θM} = \frac{\theta L_\infty + \L_c (\gamma + 1)}{\theta + \gamma + 1}$$
+$$L_{F=γM,k=θM} = \frac{\theta L_\infty + L_c (\gamma + 1)}{\theta + \gamma + 1}$$
 
 where $\gamma$ links the natural mortality $M$ to fishing mortality $F$ as the proxy for MSY (set to 1 for $L_{F=M}$), $\theta$ links the von Bertlanffy $k$ to $M$, $L_\infty$ is the asymptotic length and $L_c$ is the length at first capture.
 
