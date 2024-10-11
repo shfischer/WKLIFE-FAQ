@@ -32,15 +32,32 @@ TODO
 
 <summary>
 
-#### The "precautionary multiplier" of the ICES Category 3 advice rule reduces the advice over time
+#### The "precautionary multiplier m" of the ICES Category 3 advice rule reduces the advice over time
 
 </summary>
 
--   ICES uses three methods to calculate the advice for Category 3 data-limited stocks (excluding short-lived species). These are the "rfb rule" for species with slower individual growth, the "chr rule" for stocks with medium individual growth, and the "rb rule" for stocks for which no reliable length data from the catch is available. These three methods include a multiplier in the calculation of the catch advice, which ensures that the catch advice leads to long-term precautionary management advice. Precautionary in this context means that the risk of the stock being depleted is reduced to a low level.
+-   ICES uses three methods to calculate the advice for Category 3 data-limited stocks (excluding short-lived species). These are the "rfb rule" for species with slower individual growth, the "chr rule" for stocks with medium individual growth, and the "rb rule" for stocks for which no reliable length data from the catch is available. These three methods include a multiplier (m) in the calculation of the catch advice, which ensures that the catch advice leads to long-term precautionary management advice. Precautionary in this context means that the risk of the stock being depleted is reduced to a low level.
 -   For the rfb rule and the chr rule, this multiplier does not lead to a continuous reduction of the catch advice every time the rules are applied. Instead, the multiplier acts as a correction factor and changes the management targets of these advice rules. If a stock is estimated to be below this corrected management target, the advice value will be reduced. However, if a stock is estimated to be at or above this management target, the multiplier does not reduce the advice further.
+
+ The multiplier m of the empirical harvest control rules is a tuning parameter that ensures that the advice follows the ICES precautionary approach. The components of the harvest control rules are multiplicative, this means that the multiplier can be thought of as adjusting the target of the harvest control rules, i.e. the reference length in component f of the rfb rule and the target harvest rate of the chr rule. This principle is illustrated in the following equation for the rfb rule:
+
+$$A_{y+1} = A_y\ r\ f\ b\ m = A_y\ r\ \frac{L_{y-1}}{L_{F=M}}\ b\ m = A_y\ r\ \frac{L_{y-1}}{L_{F=M}/m}\ b = A_y\ r\ \frac{L_{y-1}}{L'_{F=M}}\ b$$
+
+where $A_{y+1}$ is the new catch advice, $A_y$ is the previous catch advice, $r$, $f$, $b$ and the multiplier $m$ are the components of the rfb rule,  the multiplier, $L_{y-1}$ the mean catch length, and $L_{F=M}$ the MSY proxy reference length.
+
+Response copied from WKLIFE XI report (ICES, 2023, Section 2.2.8, page 28): 
+* ICES. 2023. Eleventh Workshop on the Development of Quantitative Assessment Methodologies based on LIFE-history traits, exploitation characteristics, and other relevant parameters for data-limited stocks (WKLIFE XI). ICES Scientific Reports. 5:21. 74 pp. (<https://doi.org/10.17895/ices.pub.22140260>).
+
+
 -   The third advice rule, the "rb rule", was only proposed as a method of last resort and should be avoided if possible. This rule is used when no reliable length data are available. Contrary to the rfb and chr rules, the rb rule does not include a management target and simply adjusts the catch advice based on the stock trend, as observed with the stock index. The rb rule likely reduces the catch advice over time with the multiplier. This is needed to ensure that (1) the management advice is precautionary in the long term, (2) the depletion risk is not greater than for the other methods, and (3) the depletion risk does not increase over time. This situa-tion can be avoided when length data are available that are representative of the catch of the stock. These length data allow the application of the rfb or chr rules, which do not lead to a continuous reduction in the catch advice. A single year of length data can be enough to move away from the rb rule to either the rfb or chr rule.
 
-*Question source: Scottish Fishermen's Federation for WKLIFE XII 2023*
+
+*Question source: *
+
+</details>
+
+
+*Question source: WGDEEP for WKLIFE XII 2023; Scottish Fishermen's Federation for WKLIFE XII 2023*
 
 </details>
 
@@ -78,7 +95,7 @@ where the current biomass index value ($I_{y-1}$) is compared to a trigger value
 
 During the first application of the rfb/rb/chr rules, $I_\text{loss}$ is typically defined as the biomass index value in a specific year. In subsequent applications of the rfb/rb/chr rule, $I_\text{loss}$ should *NOT* be re-defined with biomass index values from new data years.
 
-Some biomass indices are derived by modelling or standardising survey data. This means that the biomass index time series may. In this case, the calculation of $I_\text{trigger}$ should be based on the new value for $I_\text{loss}$ from the same reference year (defined during the first application of the rfb/rb/chr rule). The R package `cat3advice` allows the definition of $I_\text{trigger}$ based on a reference year (see the [package vignette](https://github.com/shfischer/cat3advice/blob/main/vignettes/cat3advice.md#biomass-safeguard-b) for more details):
+Some biomass indices are derived by modelling or standardising survey data. This means that the historical biomass index time series may change. In this case, the calculation of $I_\text{trigger}$ should be based on the new value for $I_\text{loss}$ from the same reference year (defined during the first application of the rfb/rb/chr rule). The R package `cat3advice` allows the definition of $I_\text{trigger}$ based on a reference year (see the [package vignette](https://github.com/shfischer/cat3advice/blob/main/vignettes/cat3advice.md#biomass-safeguard-b) for more details):
 
 ```
 library(cat3advice)
@@ -107,29 +124,38 @@ _Response from WKLIFE XIII 2024_
 
 </details>
 
+<details>
 
-### rfb rule
+<summary>
+
+#### What to do if new life-history parameters such as $L_\infty$ are found; is there a need to recalculate things back in time?
+
+</summary>
+
+There is no need to annually update life-history parameters. If new growth pa-rameters are available and these are substantially different from previous esti-mates, these new ones should be used to update the advice rule. To ensure consistency in the calculation, derived values such as the reference length $L_\text{F=M}$ should also be updated and the respective mean catch length compared to this new reference length. Growth parameters and derived metrics such as the reference length should be periodically reevalu-ated, e.g. every 3-5 years, following a similar schedule to benchmarks for Catego-ry 1 data-rich stocks, but kept constant in-between unless there is compelling new evidence for a change.
+
+*Question source: WGDEEP for WKLIFE XII 2023*
+
+</details>
 
 <details>
 
 <summary>
 
-#### Does the multiplier m reduce the advice over time?
+#### Which life-history parameters (or strategies) matter when the von Bertalanffy growth model might not be appropriate
 
 </summary>
 
-There is sometimes the incorrect perception that the multiplier of the rfb and chr rules continuously decreases the catch advice over time. The multiplier of the empirical harvest control rules is a tuning parameter that ensures that the advice follows the ICES precautionary approach. The components of the harvest control rules are multiplicative, this means that the multiplier can be thought of as adjusting the target of the harvest control rules, i.e. the reference length in component f of the rfb rule and the target harvest rate of the chr rule. This principle is illustrated in the following equation for the rfb rule:
-
-$$A_{y+1} = A_y\ r\ f\ b\ m = A_y\ r\ \frac{L_{y-1}}{L_{F=M}}\ b\ m = A_y\ r\ \frac{L_{y-1}}{L_{F=M}/m}\ b = A_y\ r\ \frac{L_{y-1}}{L'_{F=M}}\ b$$
-
-where $A_{y+1}$ is the new catch advice, $A_y$ is the previous catch advice, $r$, $f$, $b$ and the multiplier $m$ are the components of the rfb rule,  the multiplier, $L_{y-1}$ the mean catch length, and $L_{F=M}$ the MSY proxy reference length.
-
-Response copied from WKLIFE XI report (ICES, 2023, Section 2.2.8, page 28): 
-* ICES. 2023. Eleventh Workshop on the Development of Quantitative Assessment Methodologies based on LIFE-history traits, exploitation characteristics, and other relevant parameters for data-limited stocks (WKLIFE XI). ICES Scientific Reports. 5:21. 74 pp. (<https://doi.org/10.17895/ices.pub.22140260>).
+-   The individual growth rate (von Bertalanffy $k$) is only used to decide which method or multiplier is used and a rough estimate is enough, e.g. is $k$ below $0.2\ year^{-1}$ or not. The only other growth parameter used for the rfb rule is the asymptotic length L∞, which is used in the calculation of the reference length $L_{F=M}$ but the actual shape of the growth curve is less important.
 
 *Question source: WGDEEP for WKLIFE XII 2023*
 
 </details>
+
+
+### rfb rule
+
+
 
 <details>
 
@@ -159,33 +185,7 @@ The previous 2 over 3 rule calculated catch advice based on the trend from a bio
 
 </details>
 
-<details>
 
-<summary>
-
-#### What to do if new life-history parameters such as $L_\infty$ are found; is there a need to recalculate things back in time?
-
-</summary>
-
-There is no need to annually update life-history parameters. If new growth pa-rameters are available and these are substantially different from previous esti-mates, these new ones should be used. To ensure consistency in the calculation, derived values such as the reference length LF=M should also be updated and the historical mean catch length compared to this new reference length. Growth parameters and derived metrics such as the reference length should be periodically reevalu-ated, e.g. every 3-5 years, following a similar schedule to benchmarks for Catego-ry 1 data-rich stocks, but kept constant in-between unless there is compelling new evidence for a change.
-
-*Question source: WGDEEP for WKLIFE XII 2023*
-
-</details>
-
-<details>
-
-<summary>
-
-#### Which life-history parameters (or strategies) matter when the von Bertalanffy growth model might not be appropriate
-
-</summary>
-
--   The individual growth rate (von Bertalanffy $k$) is only used to decide which method or multiplier is used and a rough estimate is enough, e.g. is $k$ below $0.2\ year^{-1}$ or not. The only other growth parameter used for the rfb rule is the asymptotic length L∞, which is used in the calculation of the reference length $L_{F=M}$ but the actual shape of the growth curve is less important.
-
-*Question source: WGDEEP for WKLIFE XII 2023*
-
-</details>
 
 <details>
 
