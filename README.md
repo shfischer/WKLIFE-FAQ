@@ -50,12 +50,6 @@ TODO
 
 -   The third advice rule, the "rb rule", was only proposed as a method of last resort and should be avoided if possible. This rule is used when no reliable length data are available. Contrary to the rfb and chr rules, the rb rule does not include a management target and simply adjusts the catch advice based on the stock trend, as observed with the stock index. The rb rule likely reduces the catch advice over time with the multiplier. This is needed to ensure that (1) the management advice is precautionary in the long term, (2) the depletion risk is not greater than for the other methods, and (3) the depletion risk does not increase over time. This situation can be avoided when length data are available that are representative of the catch of the stock. These length data allow the application of the rfb or chr rules, which do not lead to a continuous reduction in the catch advice. A single year of length data can be enough to move away from the rb rule to either the rfb or chr rule.
 
-
-*Question source: *
-
-</details>
-
-
 *Question source: WGDEEP for WKLIFE XII 2023; Scottish Fishermen's Federation for WKLIFE XII 2023*
 
 </details>
