@@ -6,9 +6,10 @@ So far, the questions and responses are copied from the ICES WKLIFE XII report (
 
 > ICES. 2023. Workshop on the Development of Quantitative Assessment Methodologies based on Life-history traits, exploitation characteristics, and other relevant parameters for data-limited stocks (WKLIFE XII). ICES Scientific Reports. 5:103. 111 pp. (<https://doi.org/10.17895/ices.pub.24581343>).
 
+Technical guidelines for ICES data limited methods are found [here](https://ices-library.figshare.com/articles/report/ICES_Guidelines_-_Advice_rules_for_stocks_in_category_2_and_3/26056306?file=47115586)
 ## Category 2
 
-### SPiCT
+### SPiCT (Stochastic surplus Production models in Continuous-Time)
 
 <details>
 
@@ -32,23 +33,29 @@ TODO
 
 <summary>
 
-#### The "precautionary multiplier m" of the ICES Category 3 advice rule reduces the advice over time
+#### Does the "precautionary multiplier m" of the ICES Category 3 advice rule reduces the advice over time?
 
 </summary>
 
 -   ICES uses three methods to calculate the advice for Category 3 data-limited stocks (excluding short-lived species). These are the "rfb rule" for species with slower individual growth, the "chr rule" for stocks with medium individual growth, and the "rb rule" for stocks for which no reliable length data from the catch is available. These three methods include a multiplier (m) in the calculation of the catch advice, which ensures that the catch advice leads to long-term precautionary management advice. Precautionary in this context means that the risk of the stock being depleted is reduced to a low level.
--   For the rfb rule and the chr rule, this multiplier does not lead to a continuous reduction of the catch advice every time the rules are applied. Instead, the multiplier acts as a correction factor and changes the management targets of these advice rules. If a stock is estimated to be below this corrected management target, the advice value will be reduced. However, if a stock is estimated to be at or above this management target, the multiplier does not reduce the advice further.
+-   For the rfb rule and the chr rule, this multiplier does not lead to a continuous reduction of the catch advice every time the rules are applied. Instead, the multiplier acts as a correction factor and adjusts the management targets of these advice rules (rfb rule: $L_{F=M}$ , chr rule: $F_{proxy, MSY}$). If a stock is estimated to be below the respective corrected management target, the catch advice value will be reduced. However, if a stock is estimated to be at or above this management target. The multiplier itself does not reduce the advice further when applied over multiple years.
 
     The multiplier m of the empirical harvest control rules is a tuning parameter that ensures that the advice follows the ICES precautionary approach. The components of the harvest control rules are multiplicative, this means that the multiplier can be thought of as adjusting the target of the harvest control rules, i.e. the reference length in component f of the rfb rule and the target harvest rate of the chr rule. This principle is illustrated in the following equation for the rfb rule:
 
     $$A_{y+1} = A_y\ r\ f\ b\ m = A_y\ r\ \frac{L_{y-1}}{L_{F=M}}\ b\ m = A_y\ r\ \frac{L_{y-1}}{L_{F=M}/m}\ b = A_y\ r\ \frac{L_{y-1}}{L'_{F=M}}\ b$$
 
-    where $A_{y+1}$ is the new catch advice, $A_y$ is the previous catch advice, $r$, $f$, $b$ and the multiplier $m$ are the components of the rfb rule,  the multiplier, $L_{y-1}$ the mean catch length, and $L_{F=M}$ the MSY proxy reference length.
+    where $A_{y+1}$ is the new catch advice, $A_y$ is the previous catch advice, $r$, $f$, $b$ and the multiplier $m$ are the components of the rfb rule.  The component f is the ratio of $L_{y-1}$, the mean catch length, and $L_{F=M}$, the MSY proxy reference length.
 
     Response copied from WKLIFE XI report (ICES, 2023, Section 2.2.8, page 28): * ICES. 2023. Eleventh Workshop on the Development of Quantitative Assessment Methodologies based on LIFE-history traits, exploitation characteristics, and other relevant parameters for data-limited stocks (WKLIFE XI). ICES Scientific Reports. 5:21. 74 pp. (<https://doi.org/10.17895/ices.pub.22140260>).
 
 
--   The third advice rule, the "rb rule", was only proposed as a method of last resort and should be avoided if possible. This rule is used when no reliable length data are available. Contrary to the rfb and chr rules, the rb rule does not include a management target and simply adjusts the catch advice based on the stock trend, as observed with the stock index. The rb rule likely reduces the catch advice over time with the multiplier. This is needed to ensure that (1) the management advice is precautionary in the long term, (2) the depletion risk is not greater than for the other methods, and (3) the depletion risk does not increase over time. This situation can be avoided when length data are available that are representative of the catch of the stock. These length data allow the application of the rfb or chr rules, which do not lead to a continuous reduction in the catch advice. A single year of length data can be enough to move away from the rb rule to either the rfb or chr rule.
+-   The third advice rule, the "rb rule", was only proposed as a method of last resort and should be avoided if possible. 
+   
+    This rule is used when no reliable length data are available and thereby uncertainty of stock status is large. Contrary to the rfb and chr rules, the rb rule does not include a management target and simply adjusts the catch advice based on the stock trend, as observed with the stock index. The rb rule likely reduces the catch advice over time with the multiplier m:
+     $$A_{y+1} = A_y\ r\ b\ m$$
+     The biomass trend r (2-over-3 rule) would need to be larger than 2 to increase the advice, even if the biomass index itself is above the biomass threshold (i.e. b=1). Simulations showed, that this is needed to ensure that (1) the management advice is precautionary in the long term, (2) the depletion risk is not greater than for the other methods, and (3) the depletion risk does not increase over time. This situation can be avoided when length data are available that are representative of the catch of the stock. These length data allow the application of the rfb or chr rules, which do not lead to a continuous reduction in the catch advice. A single year of length data can be enough to move away from the rb rule to either the rfb or chr rule.
+
+
 
 *Question source: WGDEEP for WKLIFE XII 2023; Scottish Fishermen's Federation for WKLIFE XII 2023*
 
@@ -58,11 +65,11 @@ TODO
     
 <summary>
 
-#### Changes to the reference values over time
+#### What to do if the estimated reference values change over time?
 
 </summary>
 
-The rfb, rb, and chr rules include reference values such as a trigger value for the biomass index ($I_\text{trigger}$), the length at first capture ($L_c$), a length reference value ($L_{F=M}$), or the target harvest rate $F_\text{proxy,MSY}$. In general, these reference values should be set when the methods are applied for the first time and should not be updated for every application. The values could be periodically re-evaluated every few years, similar to benchmarks for data-rich stocks. However, if the entire biomass index series is updated for a new application, for example by using delta gam modelled index, the reference values should be updated accordingly (while using the same historical period for $F_\text{proxy,MSY}$ and ($I_\text{trigger}$)).
+The rfb, rb, and chr rules include reference values such as a trigger value for the biomass index ($I_\text{trigger}$), the length at first capture ($L_c$), a length reference value ($L_{F=M}$), or the target harvest rate $F_\text{proxy,MSY}$. In general, these reference values should be set when the methods are applied for the first time and should not be updated for every application. The values could be periodically re-evaluated every few years, similar to benchmarks for data-rich stocks. However, if the entire biomass index series is updated for a new application, for example by using delta gam modelled index, the reference values should be updated accordingly (while using the same historical period for $F_\text{proxy,MSY}$ and $I_\text{trigger}$ ).
 
 _Response from WKLIFE XIII 2024_
 
@@ -72,7 +79,7 @@ _Response from WKLIFE XIII 2024_
     
 <summary>  
     
-#### Changes to the biomass index trigger ($I_\text{trigger}$) value over time
+#### What to do if the biomass index trigger ($I_\text{trigger}$) value changes over time?
 
 </summary>
 
@@ -80,15 +87,14 @@ See the response to [changes to the reference values over time](#changes-to-the-
 
 _Specific considerations for the biomass index trigger:_
 
-The biomass safeguard $b$ of the rfb, rb, and chr rules is defined as
+The biomass safeguard $b$ of the rfb, rb, and chr rules is defined as:
 
 $$b = \text{min} \left( 1, \frac{I_{y-1}}{I_\text{trigger}} \right)$$
 
 where the current biomass index value ($I_{y-1}$) is compared to a trigger value ($I_\text{trigger}$). If the most recent biomass index value falls below $I_\text{trigger}$, the biomass safeguard reduces the advised catch. In the absence of further information, $I_\text{trigger}$ is generically defined based on lowest observed biomass index value ($I_\text{trigger}= 1.4I_\text{loss}$).
 
-During the first application of the rfb/rb/chr rules, $I_\text{loss}$ is typically defined as the biomass index value in a specific year. In subsequent applications of the rfb/rb/chr rule, $I_\text{loss}$ should *NOT* be re-defined with biomass index values from new data years.
-
-Some biomass indices are derived by modelling or standardising survey data. This means that the historical biomass index time series may change. In this case, the calculation of $I_\text{trigger}$ should be based on the new value for $I_\text{loss}$ from the same reference year (defined during the first application of the rfb/rb/chr rule). The R package `cat3advice` allows the definition of $I_\text{trigger}$ based on a reference year (see the [package vignette](https://github.com/shfischer/cat3advice/blob/main/vignettes/cat3advice.md#biomass-safeguard-b) for more details):
+During the first application of the rfb/rb/chr rules, $I_\text{loss}$ is typically defined as the biomass index value in a specific historical year. In subsequent applications of the rfb/rb/chr rule, $I_\text{loss}$ (or $F_{proxy, MSY}$) should *NOT* be re-defined with biomass index values from new data years. Therefore, the reference values will stay constant as long as the historical biomass index time series is unchanged. 
+However, some biomass indices are derived by modelling or standardising survey data. This means that the historical biomass index time series may change with additional years of data. In this case, the calculation of $F_{proxy,MSY}$ should be updated from the same historical reference period and $I_\text{trigger}$ should be based on the new value for $I_\text{loss}$ from the same historical reference year (defined during the first application of the rfb/rb/chr rule). The R package `cat3advice` allows the definition of $I_\text{trigger}$ based on a reference year (see the [package vignette](https://github.com/shfischer/cat3advice/blob/main/vignettes/cat3advice.md#biomass-safeguard-b) for more details):
 
 ```
 library(cat3advice)
@@ -97,7 +103,7 @@ data(ple7e_idx) # example data
 b(ple7e_idx, yr_ref = 2007)
 ```
 
-The reference year for $I_\text{loss}$ should generally not be changed. In a modelled biomass index, the year in which $I_\text{loss}$ is observed may change to a different (historical) year. In such a case, the appropriateness of the biomass index to provide catch advice should be carefully considered. Should the change be caused by a correction of errors in historical survey data, this may warrant a change of $I_\text{loss}$ but will need to be documented (and possibly reviewed).
+The reference year for $I_\text{loss}$ should generally not be changed. In a modelled biomass index, historical index values can change with inclusion of additional years of data, and thereby the year in which $I_\text{loss}$ is observed may change to a different (historical) year. In such a case, the appropriateness of the biomass index to provide catch advice should be carefully considered. Should the change be caused by a correction of errors in historical survey data, this may warrant a change of $I_\text{loss}$ but will need to be documented (and possibly reviewed).
 
 _Response from WKLIFE XIII 2024_
 
@@ -107,7 +113,7 @@ _Response from WKLIFE XIII 2024_
 
 <summary>
 
-#### Length-frequency distributions: what if they are not representative
+#### Length-frequency distributions: what to do if they are not representative?
 
 </summary>
 
@@ -158,7 +164,9 @@ There is no need to annually update life-history parameters. If new growth param
 
 </summary>
 
-The 2 over 3 rule was implemented in 2012 as an interim measure based on the best available science at that time. Re-evaluation of this method through simulation has shown that the 2 over 3 rule does not follow the ICES precautionary approach and can increase the risk of stock depletion over time. This means that the catch advice from the 2 over 3 rule in many cases was higher than it should have been. The new rfb rule was implemented after extensive simulation testing and review and was designed to explicitly follow the ICES precautionary approach and the MSY approach. This means that the catch advice from the rfb rule may be lower than from the 2 over 3 rule but this is required to follow ICES management objectives.
+The 2 over 3 rule was implemented in 2012 as an interim measure based on the best available science at that time. Re-evaluation of this method through simulation has shown that the 2 over 3 rule does not sufficiently decrease the risk of stock depletion over time and does not follow the ICES precautionary approach. This means that the catch advice from the 2 over 3 rule in many cases was higher than it should have been. The new rfb rule was implemented after extensive simulation testing and review and was designed to explicitly follow the ICES precautionary approach and the MSY approach. Additional components (multipliers, stability clause). This means that the catch advice from the rfb rule may be lower than from the 2 over 3 rule but this is required to follow ICES management objectives.
+
+See for details : [Fischer et al. 2020](https://academic.oup.com/icesjms/article/77/5/1914/5856265)
 
 *Question source: WGDEEP for WKLIFE XII 2023*
 
@@ -168,11 +176,11 @@ The 2 over 3 rule was implemented in 2012 as an interim measure based on the bes
 
 <summary>
 
-#### Why does the advice go down even if the index is going up?
+#### Why does the catch advice go down even if the biomass index is going up?
 
 </summary>
 
-The previous 2 over 3 rule calculated catch advice based on the trend from a bio-mass index. In addition to this, the rfb rule also considers (1) the exploitation of the stock based on catch-length data and (2) includes a biomass safeguard that reduces the catch advice if the biomass index falls below a trigger value. The catch advice calculated with the rfb rule is a result of all these considerations combined. Furthermore, the trend in the biomass index is calculated by using data from the most recent five years, i.e. an increase in the index in a single year does not necessarily result in a positive biomass trend.
+The previous 2 over 3 rule calculated catch advice based on the trend from a biomass index. In addition to this, the rfb rule also considers (1) the exploitation of the stock based on catch-length data and (2) includes a biomass safeguard that reduces the catch advice if the biomass index falls below a trigger value. The catch advice calculated with the rfb rule is a result of all these considerations combined. Furthermore, the trend in the biomass index is calculated by using data from the most recent five years, i.e. an increase in the index in a single year does not necessarily result in a positive biomass trend.
 
 *Question source: WGDEEP for WKLIFE XII 2023*
 
