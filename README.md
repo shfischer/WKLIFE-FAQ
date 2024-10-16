@@ -27,7 +27,7 @@ TODO
 
 ## Category 3
 
-### General questions
+### General questions:
 
 <details>
 
@@ -141,7 +141,7 @@ The function for the calculation of the reference length in the `cat3advice` R p
 </details>
 
 
-### Questions on biomass indices
+### Questions on biomass indices:
 <details>
     
 <summary>  
@@ -209,7 +209,7 @@ In general, interpolating missing index values is not recommended because this w
 
 
 
-### Questions on length data
+### Questions on length data:
 
 <details>
 
