@@ -40,20 +40,20 @@ TODO
 -   ICES uses three methods to calculate the advice for Category 3 data-limited stocks (excluding short-lived species). These are the "rfb rule" for species with slower individual growth, the "chr rule" for stocks with medium individual growth, and the "rb rule" for stocks for which no reliable length data from the catch is available. These three methods include a multiplier (m) in the calculation of the catch advice, which ensures that the catch advice leads to long-term precautionary management advice. Precautionary in this context means that the risk of the stock being depleted is reduced to a low level.
 -   For the rfb rule and the chr rule, this multiplier does not lead to a continuous reduction of the catch advice every time the rules are applied. Instead, the multiplier acts as a correction factor and adjusts the management targets of these advice rules (rfb rule: $L_{F=M}$ , chr rule: $F_{proxy, MSY}$). If a stock is estimated to be below the respective corrected management target, the catch advice value will be reduced. However, if a stock is estimated to be at or above this management target. The multiplier itself does not reduce the advice further when applied over multiple years.
 
-The multiplier m of the empirical harvest control rules is a tuning parameter that ensures that the advice follows the ICES precautionary approach. The components of the harvest control rules are multiplicative, this means that the multiplier can be thought of as adjusting the target of the harvest control rules, i.e. the reference length in component f of the rfb rule and the target harvest rate of the chr rule. This principle is illustrated in the following equation for the rfb rule:
+    The multiplier $m$ of the empirical harvest control rules is a tuning parameter that ensures that the advice follows the ICES precautionary approach. The components of the harvest control rules are multiplicative, this means that the multiplier can be thought of as adjusting the target of the harvest control rules, i.e. the reference length in component f of the rfb rule and the target harvest rate of the chr rule. This principle is illustrated in the following equation for the rfb rule:
 
-$$A_{y+1} = A_y\ r\ f\ b\ m = A_y\ r\ \frac{L_{y-1}}{L_{F=M}}\ b\ m = A_y\ r\ \frac{L_{y-1}}{L_{F=M}/m}\ b = A_y\ r\ \frac{L_{y-1}}{L'_{F=M}}\ b$$
+    $$A_{y+1} = A_y\ r\ f\ b\ m = A_y\ r\ \frac{L_{y-1}}{L_{F=M}}\ b\ m = A_y\ r\ \frac{L_{y-1}}{L_{F=M}/m}\ b = A_y\ r\ \frac{L_{y-1}}{L'_{F=M}}\ b$$
 
-where $A_{y+1}$ is the new catch advice, $A_y$ is the previous catch advice, $r$, $f$, $b$ and the multiplier $m$ are the components of the rfb rule.  The component f is the ratio of $L_{y-1}$, the mean catch length, and $L_{F=M}$, the MSY proxy reference length.
+    where $A_{y+1}$ is the new catch advice, $A_y$ is the previous catch advice, $r$, $f$, $b$ and the multiplier $m$ are the components of the rfb rule.  The component $f$ is the ratio of $L_{y-1}$, the mean catch length, and $L_{F=M}$, the MSY proxy reference length.
 
- Response copied from WKLIFE XI report (ICES, 2023, Section 2.2.8, page 28): * ICES. 2023. Eleventh Workshop on the Development of Quantitative Assessment Methodologies based on LIFE-history traits, exploitation characteristics, and other relevant parameters for data-limited stocks (WKLIFE XI). ICES Scientific Reports. 5:21. 74 pp. (<https://doi.org/10.17895/ices.pub.22140260>).
+    Response copied from WKLIFE XI report (ICES, 2023, Section 2.2.8, page 28): * ICES. 2023. Eleventh Workshop on the Development of Quantitative Assessment Methodologies based on LIFE-history traits, exploitation characteristics, and other relevant parameters for data-limited stocks (WKLIFE XI). ICES Scientific Reports. 5:21. 74 pp. (<https://doi.org/10.17895/ices.pub.22140260>).
 
 
--   The third advice rule, the "rb rule", was only proposed as a method of last resort and should be avoided if possible. 
+-   The third advice rule, the rb rule, was only proposed as a method of last resort and should be avoided if possible. 
    
-This rule is used when no reliable length data are available and thereby uncertainty of stock status is large. Contrary to the rfb and chr rules, the rb rule does not include a management target and simply adjusts the catch advice based on the stock trend, as observed with the stock index. The rb rule likely reduces the catch advice over time with the multiplier m:
- $$A_{y+1} = A_y\ r\ b\ m$$
- The biomass trend r (2-over-3 rule) would need to be larger than 2 to increase the advice, even if the biomass index itself is above the biomass threshold (i.e. b=1). Simulations showed, that this is needed to ensure that (1) the management advice is precautionary in the long term, (2) the depletion risk is not greater than for the other methods, and (3) the depletion risk does not increase over time. This situation can be avoided when length data are available that are representative of the catch of the stock. These length data allow the application of the rfb or chr rules, which do not lead to a continuous reduction in the catch advice. A single year of length data can be enough to move away from the rb rule to either the rfb or chr rule.
+    This rule is used when no reliable length data are available and thereby uncertainty of stock status is large. Contrary to the rfb and chr rules, the rb rule does not include a management target and simply adjusts the catch advice based on the stock trend, as observed with the stock index. The rb rule likely reduces the catch advice over time with the multiplier m:
+    $$A_{y+1} = A_y\ r\ b\ m$$
+    The biomass trend r (2-over-3 trend) would need to be larger than 2 to increase the advice, even if the biomass index itself is above the biomass threshold (i.e. b=1). Simulations showed, that this is needed to ensure that (1) the management advice is precautionary in the long term, (2) the depletion risk is not greater than for the other methods, and (3) the depletion risk does not increase over time. This situation can be avoided when length data are available that are representative of the catch of the stock. These length data allow the application of the rfb or chr rules, which do not lead to a continuous reduction in the catch advice. A single year of length data can be enough to move away from the rb rule to either the rfb or chr rule.
 
 
 *Question source: WGDEEP for WKLIFE XII 2023; Scottish Fishermen's Federation for WKLIFE XII 2023*
@@ -68,7 +68,7 @@ This rule is used when no reliable length data are available and thereby uncerta
 
 </summary>
 
-The Category 3 empirical harvest control rules (rfb/rb/chr) were tested for a wide range of scenarios and stocks, including slow-growing and long-lived species and elasmobranchs. These methods were tuned to be precautionary in the long term, so there is no immediate need for additional testing. Stock-specific simulations for specific stocks are encouraged, and the ICES technical guidelines encourage such work. The WKLIFE roadmap and proposed ToRs for the next WKLIFE meeting also include work on specific life histories, including considerations for elasmobranchs.
+The Category 3 empirical harvest control rules (rfb/rb/chr) were tested for a wide range of scenarios and stocks, including slow-growing and long-lived species as well as elasmobranchs. These methods were tuned to be precautionary in the long term, so there is no immediate need for additional testing. Stock-specific simulations for specific stocks are encouraged, and the ICES technical guidelines encourage such work. The WKLIFE roadmap and proposed ToRs for the next WKLIFE meeting also include work on specific life histories, including considerations for elasmobranchs.
 
 *Question source: WGEF for WKLIFE XII 2023*
 
@@ -83,7 +83,7 @@ The Category 3 empirical harvest control rules (rfb/rb/chr) were tested for a wi
 
 </summary>
 
-The rfb, rb, and chr rules include reference values such as a trigger value for the biomass index ($I_\text{trigger}$), the length at first capture ($L_c$), a length reference value ($L_{F=M}$), or the target harvest rate $F_\text{proxy,MSY}$. In general, these reference values should be set when the methods are applied for the first time and should not be updated for every application. The values could be periodically re-evaluated every few years, similar to benchmarks for data-rich stocks. However, if the entire biomass index series is updated for a new application, for example by using delta gam modelled index, the reference values should be updated accordingly (while using the same historical period for $F_\text{proxy,MSY}$ and $I_\text{trigger}$ ).
+The rfb, rb, and chr rules include reference values such as a trigger value for the biomass index ($I_\text{trigger}$), the length at first capture ($L_c$), a length reference value ($L_{F=M}$), or the target harvest rate $F_\text{proxy, MSY}$. In general, these reference values should be set when the methods are applied for the first time and should not be updated for every application. The values could be periodically re-evaluated every few years, similar to benchmarks for data-rich stocks. However, if the entire biomass index series is updated for a new application, for example by using delta gam modelled index, the reference values should be updated accordingly (while using the same historical period for $F_\text{proxy, MSY}$ and $I_\text{trigger}$ ).
 
 _Response from WKLIFE XIII 2024_
 
@@ -97,7 +97,7 @@ _Response from WKLIFE XIII 2024_
 
 </summary>
 
-There is no need to annually update life-history parameters. If new growth parameters are available and these are substantially different and more reliable from previous estimates, these new ones should be used to update the advice rule. To ensure consistency in the calculation, derived values such as the reference length $L_{F=M}$ should also be updated and the respective mean catch length should be compared to this new reference length. In general, growth parameters and derived metrics, such as the reference length and $F_{proxy,MSY}$, should be periodically re-evaluated, e.g. every 3-5 years, following a similar schedule to benchmarks for Category 1 data-rich stocks, but kept constant in-between unless there is compelling new evidence for a change.
+There is no need to annually update life-history parameters. If new growth parameters are available and these are substantially different and more reliable from previous estimates, these new ones should be used to update the advice rule. To ensure consistency in the calculation, derived values such as the reference length $L_{F=M}$ should also be updated and the respective mean catch length should be compared to this new reference length. In general, growth parameters and derived metrics, such as the reference length $L_{F=M}$ and $F_{proxy, MSY}$, should be periodically re-evaluated, e.g. every 3-5 years, following a similar schedule to benchmarks for Category 1 data-rich stocks, but kept constant in-between unless there is compelling new evidence for a change.
 
 *Question source: WGDEEP for WKLIFE XII 2023*
 
@@ -111,7 +111,7 @@ There is no need to annually update life-history parameters. If new growth param
 
 </summary>
 
--   The individual growth rate (von Bertalanffy $k$) is only used to decide which method or multiplier is used and a rough estimate is enough, e.g. is $k$ below $0.2\ year^{-1}$ or not. The only other growth parameter used for the rfb rule is the asymptotic length L∞, which is used in the calculation of the reference length $L_{F=M}$ but the actual shape of the growth curve is less important.
+The individual growth rate (von Bertalanffy $k$) is only used to decide which method or multiplier is used and a rough estimate is enough, e.g. is $k$ below $0.2\ year^{-1}$ or not. The only other growth parameter used for the rfb rule is the asymptotic length L∞, which is used in the calculation of the reference length $L_{F=M}$ but the actual shape of the growth curve is less important.
 
 *Question source: WGDEEP for WKLIFE XII 2023*
 
@@ -128,7 +128,7 @@ The assumption of $M/k=1.5$ is solely used for a simple calculation of the refer
 
 $$L_{F=γM,k=θM} = \frac{\theta L_\infty + L_c (\gamma + 1)}{\theta + \gamma + 1}$$
 
-where $\gamma$ links the natural mortality $M$ to fishing mortality $F$ as the proxy for MSY (set to 1 for $L_{F=M}$), $\theta$ links the von Bertlanffy $k$ to $M$, $L_\infty$ is the asymptotic length and $L_c$ is the length at first capture.
+where $\gamma$ links the natural mortality $M$ to fishing mortality $F$ as the proxy for MSY ($\gamma$=1 for $L_{F=M}$), $L_c$ is the length at first capture and $L_\infty$ is the asymptotic length. $\theta$ links the von Bertlanffy $k$ to $M$ and can be adjusted to a stock-specific value.
 
 The function for the calculation of the reference length in the `cat3advice` R package (`Lref()`) includes an argument (`Mk`) to change the $M/k$ ratio to any user-defined value.
 
@@ -203,19 +203,26 @@ In general, interpolating missing index values is not recommended because this w
 *Question source: WGDEEP for WKLIFE XII 2023*
 
 </details>
-<details>
-
-<summary>
-
-
 
 ### Questions on length data:
-
 <details>
 
 <summary>
 
-#### When calculating the mean catch length, should the length class corresponding to the length of first capture ($L_c$) be included?
+#### Should we avoid to bin length data while calculating 'Lmean'?
+
+</summary>
+
+There is no need to bin data for calculating Lmean. It more important to consider bin width for calculating Lc when length distirbutions are noisy (have multiple modes).
+
+*Response WKLIFE XIII 2024*
+
+</details>
+<details>
+
+<summary>
+
+#### When calculating the mean catch length, should the length class correspond to the length of first capture ($L_c$) be included?
 
 </summary>
 
@@ -229,7 +236,7 @@ The ICES technical guidelines specify that only length classes above $L_c$ shoul
 
 <summary>
 
-#### Length-frequency distributions: what to do if they are not representative?
+####  What is the procedure if length-frequency distributions are not representative ?
 
 </summary>
 
@@ -239,12 +246,50 @@ The ICES technical guidelines specify that only length classes above $L_c$ shoul
 
 </details>
 
+<details>
+
+<summary>
+
+#### Should discards be included in length data, when there is high discard survival?
+
+</summary>
+
+-   to do
+
+*Response: WKLIFE XIII 2024*
+</details>
+<details>
+
+<summary>
+
+#### If length data collected on a new gear become available, what is the best procedure with regard to setting $L_c$, reference length $L_{F=M}$ and application of advice rule ($f$, $F_{proxy, MSY}$)?
+
+
+</summary>
+
+-   to do
+
+*Response: WKLIFE XIII 2024*
+</details>
 
 <details>
 
 <summary>
 
-#### Can survey length data be used instead of catch length data for stocks with sparse catch length data (e.g. only landings, not discards or neither). 
+#### If only length composition data from landings were available, what is the best procedure with regard to setting $L_c$, reference length $L_{F=M}$ and application of advice rule ($f$, $F_{proxy, MSY}$)?
+
+</summary>
+
+-   to do
+
+*Response: WKLIFE XIII 2024*
+</details>
+
+<details>
+
+<summary>
+
+#### Can survey length data be used instead of catch length data for stocks with sparse catch length data (e.g. only landings or no landing nor discard length data). 
 
 </summary>
 
@@ -285,11 +330,6 @@ Some work on this issue was presented at WKLIFE XII (ICES, 2023). The conclusion
 *Response: WKLIFE XIII 2024*
 
 </details>
-<details>
-
-<summary>
-
-
 
 
 
@@ -333,7 +373,7 @@ The previous 2 over 3 rule calculated catch advice based on the trend from a bio
 
 </summary>
 
--   The ICES technical guidelines recommend the implementation of the rfb rule with a biennial advice interval (ICES, 2022). WKLIFE XI (ICES, 2023) was asked if the rfb rule could be applied on an annual basis and concluded that this is unlikely to increase the risk of stock depletion but has the undesirable feature of reducing the long-term catch and should only be used in exceptional cases when asked for by ICES advice requesters (ICES, 2023, 2.2.4.1, page 21). Other advice intervals (from one to five years) were included in the generic testing of the rfb rule (Fischer et al., 2021a,b) but the biennial advice interval appeared to work best. Longer advice intervals can reduce the reactivity of the rfb rule and may increase the risk of stock depletion because the catch cannot be reduced fast enough.
+The ICES technical guidelines recommend the implementation of the rfb rule with a biennial advice interval (ICES, 2022). WKLIFE XI (ICES, 2023) was asked if the rfb rule could be applied on an annual basis and concluded that this is unlikely to increase the risk of stock depletion but has the undesirable feature of reducing the long-term catch and should only be used in exceptional cases when asked for by ICES advice requesters (ICES, 2023, 2.2.4.1, page 21). Other advice intervals (from one to five years) were included in the generic testing of the rfb rule (Fischer et al., 2021a,b) but the biennial advice interval appeared to work best. Longer advice intervals can reduce the reactivity of the rfb rule and may increase the risk of stock depletion because the catch cannot be reduced fast enough.
 
 *References* 
 
@@ -420,3 +460,20 @@ The implementation of the new WKLIFE X methods for Category 3 stocks (rfb/rb/chr
 
 ### Questions on the R package cat3advice:
 
+<details>
+<summary>
+
+#### In the cat3advice package, option “excluding_Lc = TRUE” from  Lmean function  doesn’t work on bins value (e.g : rjn.27.8c)?
+</summary>
+
+*Response: WKLIFE XIII 2024*
+</details>
+
+<details>
+<summary>
+
+#### Is there any reason to use the function : “floor” when bins are used? Would it be possible to add an option to let us choose the bins value?
+
+</summary>
+*Response: WKLIFE XIII 2024*
+</details>
