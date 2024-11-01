@@ -259,11 +259,17 @@ The ICES technical guidelines specify that only length classes above $L_c$ shoul
 
 <summary>
 
-####  What is the procedure if length-frequency distributions are not representative ?
+####  What to do if length-frequency distributions are not representative?
 
 </summary>
 
--   to do
+The length data used should be representative of the stock and fishery. This applies both for the rfb rule and the chr rule.  If length data are not representative, they should ideally not be used. The decision of whether data are representative is up to the experts of the relevant ICES expert groups.
+
+If length data from the catch are thought to be not representative or reliable enough to be used, e.g. because of low sampling levels, length data from survey could be used. See the question “Can survey length data be used instead of catch length data for stocks with sparse catch length data (e.g. only landings or no landing nor discard length data)?” for details.
+
+For discard data in the length distributions, see the questions "In the absence of discard length data, is it better to use landings or survey length data?" and "Should discards be included in the length data when discard survival is high?".
+
+*Question source*: WGEF to WKLIFE XIII 2024
 
 *Response from*: WKLIFE XIII 2024
 
@@ -320,7 +326,7 @@ For the rfb rule, including new length data is likely more straightforward becau
 
 <summary>
     
-#### Can survey length data be used instead of catch length data for stocks with sparse catch length data (e.g. only landings or no landing nor discard length data). 
+#### Can survey length data be used instead of catch length data for stocks with sparse catch length data (e.g. only landings or no landing nor discard length data)?
 
 </summary>
 
@@ -424,6 +430,25 @@ For considerations on pooling length data, see question "[Can length data be poo
 </details>
 
 
+
+<details>
+
+<summary>
+
+#### Changing the bin size of length data in the `cat3advice` R package
+
+</summary>
+
+The functions in the `cat3advice` R package that handle length data, e.g. `Lc`, `Lmean`, allow changing the size of the length bins. Generally, there is no need to do this when calculating the mean length in the catch, but it can be useful when calculating the length at first capture $L_c$ if data are noisy; see question " Should we avoid to bin length data while calculating the mean catch length 'Lmean'?" for details.
+
+If the length bin size needs to be changed, `Lc` and `Lmean` have the same function arguments to do that. `lstep` defines the new length bin size, with the units in which the length data are provided. For example, if the length data is provided in 1cm steps, then setting `lstep=2` will transform the data so that the length data are aggregated into length bins with steps of 2cm. The default for this transformation is that the smallest length bin is the smallest length in the data and the following length bin is then the smallest length bin plus `lstep`. The function argument `rounding` defines how the lengths of each bin are presented. The default is `rounding=floor`, i.e. the lower bound is used. However, other functions can be passed to this argument, e.g. `ceiling` or `round`. These are only simplistic approaches. Ideally, such an aggregation of length data should follow the same principles that were used when collecting the length data in the first place and the midpoint of the length bin is probably most representative of the lengths of individuals in a length bin. Any other binning approaches are possible (and recommended) by transforming the data before passing it to the `cat3advice` functions.
+
+
+*Question source*: WGEF to WKLIFE XIII 2024
+
+*Response from*: WKLIFE XIII 2024
+
+</details>
 
 
 
