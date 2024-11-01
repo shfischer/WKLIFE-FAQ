@@ -406,6 +406,8 @@ For some species (e.g. very slow-growing species), changes in the length may occ
 
 <details>
 
+<summary>
+
 #### How to plot the length indicator when length data are pooled or years are missing?
 
 </summary>
