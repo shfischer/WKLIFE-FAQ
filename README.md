@@ -269,49 +269,57 @@ The ICES technical guidelines specify that only length classes above $L_c$ shoul
 
 </details>
 
+
+
 <details>
 
 <summary>
 
-#### Should discards be included in length data, when there is high discard survival?
+#### Should discards be included in the length data when discard survival is high?
 
 </summary>
 
--   to do
+The simulations for developing the category 3 empirical harvest control rules were based on the total catch (which affects the stock, i.e. the dead catch). Therefore, the length data used in the rfb and chr rules should ideally be representative of the dead catch. This means that surviving discards could be excluded from the catch length data if this is thought to make the length data more representative of the dead catch.
+
+However, it should be ensured that there is consistency in the length data over time (use the same metric over time) and consistency between the mean catch length and reference lengths ($L_c$, $L_{F=M}$).
+
+
+*Question source*: WGEF to WKLIFE XIII 2024
 
 *Response from*: WKLIFE XIII 2024
+
 </details>
 <details>
 
 <summary>
 
-#### If length data collected on a new gear become available, what is the best procedure with regard to setting $L_c$, reference length $L_{F=M}$ and application of advice rule ($f$, $F_{proxy, MSY}$)?
-
+#### What to do if new length data become available (e.g. for a new gear or discards)?
 
 </summary>
 
--   to do
+The length data used should be representative of the underlying stock and fishery and the gears should ideally cover the entire fishery. 
+
+If data from a new gear become available, but the gear has only a small or negligible contribution to the total catch, there is likely no need to include it. If the contribution is a major part of the fishery, then the previous use of the length data may be questioned.
+
+For the use of discard data, see question XYZ.
+
+When considering including new data into the length distribution, it is important to consider whether data are only available occasionally, for all historical years, and whether it will also be available in the future. This is because the use of length data should be consistent over time. If the new data make the length distribution more representative of the stock and fishery, they should be included. Such substantial changes to the length data will require updating references values ($L_c$, $L_{F=M}$) to ensure the mean catch length and reference values are consistent. Such changes may require a review.
+
+For the rfb rule, including new length data is likely more straightforward because the rfb uses the most recent length data. On the other hand, the generic application of the chr rule uses historical length data to define the target harvest rate $F_\text{MSY proxy}$. Therefore, changes to the historical length data may cause changes to this target harvest rate.
+
+*Question source*: WGEF to WKLIFE XIII 2024
 
 *Response from*: WKLIFE XIII 2024
+
 </details>
+
+
+
 
 <details>
 
 <summary>
-
-#### If only length composition data from landings were available, what is the best procedure with regard to setting $L_c$, reference length $L_{F=M}$ and application of advice rule ($f$, $F_{proxy, MSY}$)?
-
-</summary>
-
--   to do
-
-*Response from*: WKLIFE XIII 2024
-</details>
-
-<details>
-
-<summary>
-
+    
 #### Can survey length data be used instead of catch length data for stocks with sparse catch length data (e.g. only landings or no landing nor discard length data). 
 
 </summary>
@@ -332,11 +340,19 @@ Some work on this issue was presented at WKLIFE XII (ICES, 2023). The conclusion
 
 <summary>
 
-#### Is it better to use landings data only (in the absence of discard data) or survey length data?
+#### In the absence of discard length data, is it better to use landings or survey length data?
 
 </summary>
 
--   to do
+The length data used in the rfb rule should be representative of the underlying stock and fishery and the gears should ideally cover the entire fishery. In the absence of reliable catch length data, data from surveys can be used (see question ["Can survey length data be used instead of catch length data for stocks with sparse catch length data (e.g. only landings or no landing nor discard length data)."](#can-survey-length-data-be-used-instead-of-catch-length-data-for-stocks-with-sparse-catch-length-data-eg-only-landings-or-no-landing-nor-discard-length-data) for details). If there are neither reliable and representative length data from the catch nor from surveys, the rfb rule should not be used.
+
+If discard survival is assumed to be high or discards are small or negligible compared to the landings, excluding discards is unlikely to have a big impact and length data from the landings could be used instead of length data from the total catch. If some discards occur at small lengths, which are likely below the length of first capture ($L_c$), removing these from length distributions is not an issue, because they will be removed anyway for the calculation of the mean catch length. If discards are substantial, excluding discards invalidates the data, as the reference points and mean length cannot be calculated correctly.
+
+Importantly, the same data source should be used in consecutive applications of the rfb rule to ensure consistency in the length indicator over time. Should there be changes in the data source for the length data, length reference values may have to be re-evaluated.
+
+The ICES technical guidelines set out the general principles for the application of the rfb rule and what data to use. WKLIFE is not in a position to comment on very specific examples. Questions such as whether data is representative should be addressed by the relevant experts in the assessment working groups with more knowledge about the stock and fishery.
+
+*Question source*: WGEF to WKLIFE XIII 2024
 
 *Response from*: WKLIFE XIII 2024
 
@@ -350,11 +366,60 @@ Some work on this issue was presented at WKLIFE XII (ICES, 2023). The conclusion
 
 </summary>
 
--   to do
+For considerations on using length data from landings instead of from the total catch, see question XYZ.
+
+The length of first capture $L_c$ of the total catch cannot easily be estimated from landings data if discards are substantial. Whether the smaller lengths from landings are representative for total catches depends on the discard rate at length. In some specific cases, the lowest lengths in the landings may coincide with $L_c$ but this cannot be generalised.
+
+
+*Question source*: WGEF to WKLIFE XIII 2024
 
 *Response from*: WKLIFE XIII 2024
 
 </details>
+
+
+
+
+<details>
+
+<summary>
+
+#### Can length data be pooled from several years?
+
+</summary>
+
+The ICES technical guidelines ([ICES, 2024](https://doi.org/10.17895/ices.pub.26056306)) recommend pooling of length data over several years for the estimation of length reference points, such as $L_c$ (which in turn is used in the calculation of the reference length $L_{F=M}$). This can reduce the impact of noise in the data and give more reliable estimates.
+
+However, component $f$ of the rfb rule based on the mean catch length, should generally be estimated with annual data so that changes in the fishing pressure can be observed. This also makes sure that the latest signal from the length data is used.
+
+For some species (e.g. very slow-growing species), changes in the length may occur slowly after changes in the stock status. Pooling of data in the length indicator may be possible in such cases. However, drastic changes to the stock, e.g. removal of large individuals by the fishery can still cause fast changes in the length indicator. If length data are very noise, their appropriateness for use in the rfb rule might be questioned.
+
+*References*
+
+* ICES. 2024. ICES Guidelines - Advice rules for stocks in category 2 and 3. Version 2. ICES Guidelines and Policies - Advice Technical Guidelines. 30 pp. <https://doi.org/10.17895/ices.pub.26056306>
+
+*Question source*: WGEF to WKLIFE XIII 2024
+
+*Response from*: WKLIFE XIII 2024
+
+</details>
+
+#### How to plot the length indicator when length data are pooled or years are missing?
+
+</summary>
+
+Exactly what and how data are presented in an advice sheet is outside the scope of WKLIFE.
+
+For considerations on pooling length data, see question "[Can length data be pooled from several years?](#can-length-data-be-pooled-from-several-years)". If length data are pooled, WKLIFE suggests that the points in the length indicator plot are not linked because they do not represent a continuous time series. The same applies if there are gaps in the time series. Different metrics (e.g. annual values and pooled data) should ideally not be shown in the same figure. 
+
+
+*Question source*: WGEF to WKLIFE XIII 2024
+
+*Response from*: WKLIFE XIII 2024
+
+</details>
+
+
 
 
 
@@ -428,21 +493,14 @@ The ICES technical guidelines recommend the implementation of the rfb rule with 
 
 </summary>
 
--   to do
+The simulations for developing the category 3 empirical harvest control rules were based on the total catch (which affects the stock, i.e. the dead catch).
 
-*Response from*: WKLIFE XIII 2024
+The component f of the rfb rule gives an indication about the fishing pressure on the stock and does not make any decision on whether to give landings or catch advice. Usually, the total catch (landings and discards) are used in the rfb rule and catch advice is given. The corresponding landings and discards can then be calculated with the (assumed) discard rate.
 
-</details>
+WKLIFE is not in the position to decide whether catch or landings advice is produced. Such a decision will depend on the level of discards compared to the total stock and discard survival.
 
-<details>
 
-<summary>
-
-#### For the factor f, of the rfb rule, can length data be pooled? How is pooled data in inverse f graphically represented ?
-
-</summary>
-
--   to do
+*Question source*: WGEF to WKLIFE XIII 2024
 
 *Response from*: WKLIFE XIII 2024
 
