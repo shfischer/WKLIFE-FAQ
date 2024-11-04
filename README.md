@@ -595,5 +595,13 @@ The implementation of the new WKLIFE X methods for Category 3 stocks (rfb/rb/chr
 #### Is there any reason to use the function : “floor” when bins are used? Would it be possible to add an option to let us choose the bins value?
 
 </summary>
+
+The functions in the cat3advice R package that handle length data, e.g. `Lc`, `Lmean`, allow changing the size of the length bins. Generally, there is no need to do this when calculating the mean length in the catch and it is more useful when calculating the length at first capture L_c; see question " Should we avoid to bin length data while calculating the mean catch length 'Lmean'?" for details.
+
+If the length bin size needs to be changed, `Lc` and `Lmean` have the same function arguments to do that. `lstep` defines the new length bin size, with the units in which the length data are provided. For example, if the length data is provided in 1cm steps, then setting `lstep=2` will transform the data so that the length data are aggregated into length bins with steps of 2cm. The default for this transformation is that the smallest length bin is the smallest length in the data and the following length bin is then the smallest length bin plus `lstep`. The function argument `rounding` defines how the lengths of each bin are presented. The default is `rounding=floor`, i.e. the lower bound is used. However, other functions can be passed to this argument, e.g. `ceiling` or `round`. These are only simplistic approaches. Ideally, such an aggregation of length data should follow the sample principles that were used when collecting the length data in the first place and the midpoint of the length bin is probably most representative of the lengths of individuals in a length bin. Any other binning approaches are possible by transforming the data before passing it to the `cat3advice` functions.
+
+*Question source*: WGEF to WKLIFE XIII 2024
+
 *Response from*: WKLIFE XIII 2024
+
 </details>
