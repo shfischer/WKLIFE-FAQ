@@ -16,19 +16,551 @@ The ICES technical guidelines for data-limited methods are available from:
 
 ### SPiCT (Stochastic surplus Production models in Continuous-Time)
 
+#### Assessment and fitting
+
 <details>
 
 <summary>
 
-#### Is the generic SPiCT harvest control rule appropriate for long-lived species such as porbeagle shark?
+##### What are good practices regarding SPiCT?
 
 </summary>
 
-TODO
+Good practices for applying SPiCT and deriving catch advice based on a SPiCT
+assessment involve several important steps. First, it is essential to follow the
+specific SPiCT technical guidelines (Mildenberger et al., 2024) and ICES
+technical guidelines (ICES, 2022), which emphasize the model setup, input data,
+and understand the model’s assumptions and ICES guidelines for estimating catch
+advice based on a SPiCT assessment. Additionally, the users should apply the
+general recommendations for surplus production models outlined by Kokkalis et
+al. (2024) and incorporate general good practices for stock assessments (Punt,
+2023). This includes tailoring the model to the species being assessed,
+validating the data, and ensuring that the assumptions align with the stock’s
+life-history. Any model fitting should also include diagnostic checks following
+guidelines by Carvalho et al. (2021). Ideally, a new SPiCT assessment is
+assessed within a benchmark workshop where stock, fisheries, and model experts
+are present.
 
-*Question source: WGEF for WKLIFE XII 2023*
+*References*
+
+* Carvalho, F., Winker, H., Courtney, D., Kapur, M., Kell, L., Cardinale, M.,
+  Schirripa, M., Kitakado, T., Yemane, D., Piner, K.R., Maunder, M.N., Taylor,
+  I., Wetzel, C.R., Doering, K., Johnson, K.F., Methot, R.D., 2021. A cookbook
+  for using model diagnostics in integrated stock assessments. Fisheries
+  Research 240, 105959. https://doi.org/10.1016/j.fishres.2021.105959
+
+* Kokkalis, A., Berg, C.W., Kapur, M.S., Winker, H., Jacobsen, N.S., Taylor,
+  M.H., Ichinokawa, M., Miyagawa, M., Medeiros-Leal, W., Nielsen, J.R. and
+  Mildenberger, T.K., 2024. Good practices for surplus production models.
+  Fisheries Research, 275, p.107010.
+  https://doi.org/10.1016/j.fishres.2024.107010
+
+* ICES. 2022. ICES technical guidance for harvest control rules and stock
+  assessments for stocks in categories 2 and 3. ICES Technical Guidelines.
+  Report. https://doi.org/10.17895/ices.advice.19801564.v2
+
+* Mildenberger, T. K., A. Kokkalis, and C. W. Berg. 2024. Guidelines for the
+  stochastic production model in continuous time (SPiCT).
+  https://github.com/DTUAqua/spict/blob/master/spict/inst/doc/spict_guidelines.pdf
+
+* Punt, A., E. 2023. Those who fail to learn from history are condemned to
+  repeat it: A perspective on current stock assessment good practices and the
+  consequences of not following them. Fisheries Research, 261, p.1066642
+
 
 </details>
+
+
+<details>
+
+<summary>
+
+##### Can SPiCT be used with monotonically decreasing or increasing time series (also refered to as one-way-trips)?
+
+</summary>
+
+Yes, SPiCT can be applied to one-way-trips and might result in acceptable
+assessment results and diagnostics, however, the assessment inhibits
+substantially more uncertainty and is potentially biased when historical data
+does not cover periods of low and high biomass, i.e. both sides of the
+production curve. In the case, that the assessment passes all diagnostic tests
+(see Mildenberger et al. 2024) and is accepted within a benchmark process, more
+precautionary harvest control rules should be considered that buffer against the
+uncertainty due to the lack of contrast in the data. Retrospective patterns and
+bias are more likely if the biomass index is monotonically decreasing or
+increasing in the most recent years of the assessment and can indicate a lack of
+contrast in the data.
+
+*References*
+
+* Mildenberger, T. K., A. Kokkalis, and C. W. Berg. 2024. Guidelines for the
+  stochastic production model in continuous time (SPiCT).
+  https://github.com/DTUAqua/spict/blob/master/spict/inst/doc/spict_guidelines.pdf
+
+</details>
+
+
+
+
+<details>
+
+<summary>
+
+##### Do I need to bias-correct priors?
+
+</summary>
+
+Yes, if the mean of a prior distribution on natural scale is supposed to
+correspond to the mean value of the prior in SPiCT, then the prior should be
+bias corrected by subtracting $-\frac{\sigma^2}{2}$ from the $\log(\mu)$ of the
+prior, where $\mu$ is the mean on natural scale and $\sigma$ is the standard
+deviation of the prior on log scale.
+
+</details>
+
+
+
+<details>
+
+<summary>
+
+##### Can I just use a prior from a meta study for the intrinsic growth rate (r)?
+
+</summary>
+
+In theory yes, but please note that the model parameters r (intrinsic growth
+rate) and n (shape of the production curve) are tightly linked. A certain r
+prior can have quite different consequences for a Schaefer (n = 2) or Fox model
+(n = 1). Thus, consider converting the r prior from the scale on which it was
+derived (e.g. r prior from meta study or using SPM priors assuming n = 2) to the
+scale of the assessment model (e.g. n prior around Schaefer or Fox model). More
+information about the conversion of r priors and how to do that based on n can
+be found in Kokkalis et al. (2024).
+
+*References*
+
+* Kokkalis, A., Berg, C.W., Kapur, M.S., Winker, H., Jacobsen, N.S., Taylor,
+  M.H., Ichinokawa, M., Miyagawa, M., Medeiros-Leal, W., Nielsen, J.R. and
+  Mildenberger, T.K., 2024. Good practices for surplus production models.
+  Fisheries Research, 275, p.107010.
+  https://doi.org/10.1016/j.fishres.2024.107010
+
+</details>
+
+
+<details>
+
+<summary>
+
+##### Is a Schaefer model (n=2) always more precautionary than a model with a more right-skewed production curve?
+
+</summary>
+
+No. While theoretically a more left-skewed production curve (e.g. Schaefer, n=2)
+implies larger $B_{\text{MSY}}/K$ and $F_{\text{MSY}}$ given the same MSY and K
+than a more right-skewed production curve (e.g. Fox, n=1), the different
+production curves do not only affect the model parameters and reference points
+in the fitting procedure, but also the states relative to them. Therefore, a
+general prediction on how models with n fixed to different values affects the
+stock status and catch advice is not possible and the effect might vary from a
+stock-to-stock basis.
+
+</details>
+
+
+<details>
+
+<summary>
+
+##### Can SPiCT with default settings and priors be used for deriving catch advice?
+
+</summary>
+
+Yes, SPiCT with default settings and priors can be used for deriving catch
+advice. However, by default, SPiCT uses a wide prior (sd = 2) around n = 2
+(Schaefer model) and wide priors (sd = 2) around the ratio of the observation
+error to process error ($\alpha = \frac{\sigma_I}{\sigma_B}$ and $\beta =
+\frac{\sigma_C}{\sigma_F}$). These assumptions might be more or less suitable
+for different stocks and should ideally be evaluated and replaced by
+stock-specific information. For example, in most cases the observation error for
+the catches ($\sigma_C$) is likely smaller than the standard deviation of the
+random walk F process ($\sigma_F$) which might include considerable jumps due to
+catch advice in the past. Similarly, the biomass process error ($\sigma_B$)
+might be smaller than the observation error of the biomass index ($\sigma_I$).
+The information for these priors should be stock-specific and could for
+$\sigma_I$, for example, be based on the CV (or sd on log scale) of the
+estimated biomass index.
+
+</details>
+
+
+<details>
+
+<summary>
+
+##### Can SPiCT be used with commercial CPUE information?
+
+</summary>
+
+Yes, SPiCT can be used with commercial CPUE data (fishery dependent data), but
+several recommendations should be followed to ensure a reliable stock
+assessment. First, it is important to standardize the CPUE. This standardization
+should follow the good practices guidelines proposed by Hoyle et al. (2024), and
+account for spatial and temporal interactions (if available), include zeros
+(representing instances of no catch), and consider different assumptions
+regarding technological advancements (technological creep), which can impact
+fishing efficiency over time. Additionally, it is essential to explore potential
+confounding factors, such as target species, reference fleet, fishing gears and
+assumptions related to error distribution, and the overall model formula.
+Smoothing the CPUE index over time should be avoided, as this can lead to a loss
+of independence between observations, which is crucial for maintaining the
+validity of the data in the model.
+
+*References*
+
+* Hoyle, S. D., Campbell, R. A., Ducharme-Barth, N. D., Grüss, A., Moore, B. R.,
+  Thorson, J.T., Tremblay-Boyer, L., Winker, H., Zhou, S. and Maunder,
+  M.N. 2024. Catch per unit effort modelling for stock assessment: A summary of
+  good practices. Fisheries Research, 269, 106860.
+  https://doi.org/10.1016/j.fishres.2023.106860
+
+</details>
+
+
+<details>
+
+<summary>
+
+##### How does SPiCT account for uncertainty?
+
+</summary>
+
+Uncertainty can and should (if available) be included in a SPiCT assessment.
+Relative uncertainty can be included by adjusting the scaling of the standard
+deviation for catch (variable stdevfacC in input list) and biomass indices
+(variable stdevfacI in input list). Note that standardizing these vectors to
+mean of 1 is important as otherwise the interpretation of variance parameters
+changes which might affect priors, including the default prior for the noise
+ratios ($\alpha = \frac{\sigma_I}{\sigma_B}$ and $\beta =
+\frac{\sigma_C}{\sigma_F}$). In cases where precise quantitative information on
+uncertainty is not available, qualitative scaling can be applied. For example,
+if a biomass index before 2003 is known to be less reliable, it can be marked as
+more uncertain (2, 3, 5 times) than data from later periods. Sensitivity
+scenarios should confirm that the actual value of this qualitative uncertainty
+scaling does not drive the assessment results. Uncertainty can also be
+incorporated using priors for variance parameters, such as σC or σI . When
+modifying priors for these variance parameters, it is important to consider that
+by default SPiCT uses two priors for the variance ratios ($\alpha =
+\frac{\sigma_I}{\sigma_B}$ and $\beta = \frac{\sigma_C}{\sigma_F}$), which may
+need to be turned off to avoid conflicts when priors for the observation or
+process noise parameters are used directly.
+
+</details>
+
+
+<details>
+
+<summary>
+
+##### Is process and observation noise in SPiCT linked?
+
+</summary>
+
+No, in theory the process and observation noise in SPiCT is not linked. However,
+the default settings of spict include two vague priors on the hyper parameters
+alpha and beta around 1 (with a standard deviation of 2 on log scale). These
+hyper parameters are not model parameters but depend on them (thus referred to
+as "hyper" parameters) and link the process and observation errors for the
+biomass process and indices, and fishing mortality process and catches,
+respectively. The individual noise parameters (sdb, sdi, sdf, and sdc) are
+actual model parameters and are estimated. Other than the default noise ratio
+hyper parameters (alpha and beta), SPiCT does not assume any link between the
+individual noise parameters. Nevertheless, the estimated noise parameters are
+still likely to be correlated. The default prior for the hyper parameters were
+merely introduced as a support for model convergence in data-limited cases.
+Pedersen and Berg (2017) wrote: "In cases where it is not possible to separate
+process and observation error, a common simplification is to assume process
+error of Bt and observation error of It to be equal (Ono et al. 2012; Thorson et
+al. 2013), that is to fix alpha=1. A similar relationship between the process
+error of Ft and the observation error of Ct could be envisioned, that is that
+beta=1, which we use when sdc and sdf cannot be estimated separately." Thus, the
+general recommendation is to deactivate the default priors for these hyper
+parameters if they are not needed for model convergence or better information is
+available about the individual noise parameters, e.g., from the abundance index
+calculation or meta studies. For example, the survey indices might be associated
+with higher observation error (e.g., low encounter rates) and the process error
+might be disproportionately smaller due to longer generation times and the
+reproductive biology for slow growing, low fecundity and bycatch species such as
+elasmobranchs. In this case, default priors should be deactivated, and this
+prior knowledge should be translated into prior distributions for the individual
+noise parameters. Prior-posterior distributions can and should be checked (see
+e.g., the function plotspict.priors() in the spict R package) and the
+sensitivity of the assessment to all priors should be evaluated.
+
+*References*
+
+* Ono, K., Punt, A.E. and Rivot, E. (2012) Model performance analysis for
+  Bayesian biomass dynamics models using bias, precision and reliability
+  metrics. Fisheries Research 125, 173–183.
+
+* Pedersen, M.W., Berg, C.W., 2017. A stochastic surplus production model in
+  continuous time. Fish and Fisheries 18, 226–243.
+  https://doi.org/10.1111/faf.12174.
+
+* Thorson, J.T., Minto, C., Minte-Vera, C.V., Kleisner, K.M., Longo, C. and
+  Jacobson, L. (2013) A new role for effort dynamics in the theory of harvested
+  populations and data-poor stock assessment. Canadian Journal of Fisheries and
+  Aquatic Sciences 70, 1829–1844.
+
+
+
+</details>
+
+
+
+<details>
+
+<summary>
+
+##### Is SPiCT suitable for slow-growing species, such as some deep-water species or other species with specific life history strategies, such as elasmobranchs?
+
+</summary>
+
+Slow-growing species, such as some elasmobranch and deep-water life history
+strategies are generally categorized by slower growth, low productivity (low
+fecundity, late maturity, etc.), and low variability. Two tusk stocks
+(usk.27.1–2, usk.27.3a456a7–912) and the Thornback ray stock in Division 8c
+(rjc.27.8c) were part of SPiCT benchmark workshops in the last years (ICES,
+2021; ICES, 2023). While the Thornback ray assessment was accepted for providing
+management advice, the tusk stocks were rejected. However, the reasons for the
+rejections were short CPUE time series and problems with the CPUE
+standardization and thus unrelated to the life history strategies. Short index
+and/or catch time series challenge production models and the estimation of all
+parameters and specific model configurations might be required. Elasmobranch
+and deep-water species often provide biennial advice within ICES. So far there
+is no indication that SPiCT is not applicable to species with specific
+elasmobranch or deep-water life history strategies. A lower and more risk-averse
+fractile of the predicted catch distribution could be considered for the catch
+advice to account for the lower productivity of these sensitive species, as was
+done for the advice for porbeagle (15th percentile).
+
+*References*
+
+* ICES. 2021. Benchmark Workshop on the development of MSY advice for category 3
+  stocks using Surplus Production Model in Continuous Time; SPiCT (WKMSYSPiCT).
+  ICES Scientific Reports. 3:20. 317 pp. https://doi.org/10.17895/ices.pub.7919
+
+* ICES. 2023. Benchmark workshop 2 on development of MSY advice using SPiCT
+  (WKBMSYSPiCT2). ICES Scientific Reports. 5:65. 472 pp.
+  https://doi.org/10.17895/ices.pub.23372990
+
+
+</details>
+
+
+<details>
+
+<summary>
+
+##### Is SPiCT suitable for short-lived species?
+
+</summary>
+
+There is no indication that SPiCT should not be suitable for short-lived
+species. If available, seasonal information (e.g. seasonal catches or biomass
+indices in multiple seasons) are recommended to be used and might even be more
+important for the assessment of short-lived stocks. The timing of the biomass
+index relative to the timing of the assessment as shown to play an important
+role for the assessment and forecast of short-lived stocks such as anchovy in
+the Bay of Biscay (Mildenberger et al., 2022). The shorter the time period
+between the last information and the assessment, the more accurate the
+assessment and forecast.
+
+*References*
+
+* Mildenberger, T. K., Berg, C. W., Kokkalis, A., Hordyk, A. R., Wetzel, C.,
+  Jacobsen, N. S., Punt, A.E., & Nielsen, J. R. (2022). Implementing the
+  precautionary approach into fisheries management: Biomass reference points and
+  uncertainty buffers. Fish and Fisheries, 23, 73–92.
+  https://doi.org/10.1111/faf.12599
+
+
+</details>
+
+
+#### Diagnostics and validation
+
+
+<details>
+
+<summary>
+
+#### How can I evaluate a SPiCT assessment?
+
+</summary>
+
+Stock assessments should be evaluated based on four criteria defined by Carvalho
+et al. (2021): 1) model convergence; 2) fit to the data; 3) model consistency;
+and 4) prediction skill. More information to these criteria and regarding SPiCT
+specifically can be found in Kokkalis et al. (2024) and Mildenberger et al.
+(2024). The spict R package provides user-friendly functions for performing
+these model diagnostics, such as a function to evaluate the observation
+residuals (plotspict.diagnostic()) and process residuals
+(plotspict.diagnostic.process()), to do a retrospective analysis (retro()), or a
+hindcasting cross-validation (hindcast()).
+
+*References*
+
+* Carvalho, F., Winker, H., Courtney, D., Kapur, M., Kell, L., Cardinale, M.,
+  Schirripa, M., Kitakado, T., Yemane, D., Piner, K.R., Maunder, M.N., Taylor,
+  I., Wetzel, C.R., Doering, K., Johnson, K.F., Methot, R.D., 2021. A cookbook
+  for using model diagnostics in integrated stock assessments. Fisheries
+  Research 240, 105959. https://doi.org/10.1016/j.fishres.2021.105959
+
+* Kokkalis, A., Berg, C.W., Kapur, M.S., Winker, H., Jacobsen, N.S., Taylor,
+  M.H., Ichinokawa, M., Miyagawa, M., Medeiros-Leal, W., Nielsen, J.R. and
+  Mildenberger, T.K., 2024. Good practices for surplus production models.
+  Fisheries Research, 275, p.107010. https://doi.org/10.1016/j.fishres.2024.107010
+
+* Mildenberger, T. K., A. Kokkalis, and C. W. Berg. 2024. Guidelines for the
+  stochastic production model in continuous time (SPiCT).
+  https://github.com/DTUAqua/spict/blob/master/spict/inst/doc/spict_guidelines.pdf
+
+</details>
+
+
+<details>
+
+<summary>
+
+#### What does it mean if the retrospective bias of relative states is worse than for absolute states?
+
+</summary>
+
+The retrospective analysis is an important diagnostic test (Carvalho et al.,
+2021). The finding that consistent retrospective patterns (or bias) is larger
+for relative than absolute states can be caused by fixing model parameters. For
+example, for the stock rjc.27.9a, fixing n = 2 (Schaefer model) together with
+limited information in the data (one way trip in F and B) caused the unexpected
+retrospective patterns with a stronger bias for relative than for absolute
+values. Estimating n with a prior showed strong retrospective pattern for both
+absolute and relative states (ICES, 2024).
+
+*References*
+
+* Carvalho, F., Winker, H., Courtney, D., Kapur, M., Kell, L., Cardinale, M.,
+  Schirripa, M., Kitakado, T., Yemane, D., Piner, K.R., Maunder, M.N., Taylor,
+  I., Wetzel, C.R., Doering, K., Johnson, K.F., Methot, R.D., 2021. A cookbook
+  for using model diagnostics in integrated stock assessments. Fisheries
+  Research 240, 105959. https://doi.org/10.1016/j.fishres.2021.105959
+
+* ICES. 2024. Workshop on the Development of Quantitative Assessment
+  Methodologies based on Life-history traits, exploitation characteristics, and
+  other relevant parameters for data-limited stocks (WKLIFEXIII). ICES
+  Scientific Reports.
+
+</details>
+
+
+<details>
+
+<summary>
+
+#### Can SPiCT recover from zero catch advice?
+
+</summary>
+
+Yes, SPiCT can handle recovery from zero catch advice, because the TAC does not
+depend on last year’s catch/advice and the harvest control rule (HCR) includes a
+target reference point. However, SPiCT cannot handle zeros as the model is
+performing calculation in log space. If catch/landings are really zero, use a
+small number instead of zero (e.g. ∼1t if catches were around hundreds of tons).
+See Section 2.3 in ICES (2023) for more information.
+
+*References*
+
+* ICES. 2023. Workshop on the Development of Quantitative Assessment
+  Methodologies based on Life-history traits, exploitation characteristics, and
+  other relevant parameters for data-limited stocks (WKLIFEXII). ICES Scientific
+  Reports. 5:103. 111 pp. https://doi.org/10.17895/ices.pub.24581343
+
+</details>
+
+
+
+#### Harvest control rules and management advice
+
+
+<details>
+
+<summary>
+
+##### Can current advice rules also be used for biennial (or longer) advice cycles?
+
+</summary>
+
+Yes, current advice rules can also be applied to biennial or longer advice
+cycles. At the same time, we note the importance of a flexible and responsive
+management framework and long advice cycles can decrease the performance of the
+harvest control rules, such as longer rebuilding times, lower yield or higher
+risk.
+
+</details>
+
+
+<details>
+
+<summary>
+
+##### Why might SPiCT give much lower or higher catch advice than empirical rules, such that there is a mismatch between recent catches/landings and advice?
+
+</summary>
+
+Switching from trend-based advice to an assessment method could of course lead
+to big jumps (up or down). This is stated in the advice sheet under the catch
+scenario table with a sentence like "The increase in the advice (XX%) is due to
+change of assessment method used." These jumps are to be expected as we now have
+reference points and a way to estimate stock status as the basis of the advice.
+Another reason for much higher landings advice from an assessment model than
+observed landings, could be the fact that previous advice (and thus available
+landings data) was based on highly precautionary empirical rules. If the
+assessment is accepted (i.e. diagnostic tests are passed), the advice should
+follow from it. That said, if the variability in the advice is of concern, an
+increase cap or transition rules when moving from one harvest control rule
+(e.g., rfb rules) to another (e.g., SPiCT) and there is a large increase in
+advised landings might be a good idea. However, one should be more cautious with
+the decrease cap, as we now have an assessment that estimates a lower stock
+Status. WKLife is currently working on developing and testing different advice
+catch caps for these transition periods (see Section 3.3.1 in ICES, 2024).
+
+*References*
+
+* ICES. 2024. Workshop on the Development of Quantitative Assessment Methodologies based on Life-history traits, exploitation characteristics, and other relevant parameters for data-limited stocks (WKLIFEXIII). ICES Scientific Reports.
+
+</details>
+
+
+<details>
+
+<summary>
+
+##### When should the 15th and 35th percentile for the predicted catch distribution be used in the advice rules for SPiCT?
+
+</summary>
+
+The 35th percentile (or 0.15 fractile) is the default percentile of the
+recommended harvest control rule (HCR) based on an accepted SPiCT assessment. It
+accounts for the assessment uncertainty and suggests a lower catch advice the
+higher the uncertainty. The HCR with the 15th percentile (or 0.15 fractile) of
+the predicted catch distribution is a more precautariony version of the default
+HCR and should be considered to derive catch advice for vulnerable species.
+Vulnerable species, such as many deep-water fish species and elasmobranch, can
+be characterized besides others by slow somatic growth, low productivity, low
+fecundity, late maturity, strong density-dependence (low steepness).
+
+</details>
+
+
 
 ## Category 3
 
@@ -56,8 +588,8 @@ TODO
     * ICES. 2023. Eleventh Workshop on the Development of Quantitative Assessment Methodologies based on LIFE-history traits, exploitation characteristics, and other relevant parameters for data-limited stocks (WKLIFE XI). ICES Scientific Reports. 5:21. 74 pp. <https://doi.org/10.17895/ices.pub.22140260>.
 
 
--   The third advice rule, the rb rule, was only proposed as a method of last resort and should be avoided if possible. 
-   
+-   The third advice rule, the rb rule, was only proposed as a method of last resort and should be avoided if possible.
+
     This rule is used when no reliable length data are available and thereby uncertainty of stock status is large. Contrary to the rfb and chr rules, the rb rule does not include a management target and simply adjusts the catch advice based on the stock trend, as observed with the stock index. The rb rule likely reduces the catch advice over time with the multiplier $m$:
     $$A_{y+1} = A_y\ r\ b\ m$$
     The biomass trend $r$ (2-over-3 trend) would need to be larger than 2 to increase the advice, even if the biomass index itself is above the biomass threshold (i.e. $b=1$). Simulations showed, that this is needed to ensure that (1) the management advice is precautionary in the long term, (2) the depletion risk is not greater than for the other methods, and (3) the depletion risk does not increase over time. This situation can be avoided when length data are available that are representative of the catch of the stock. These length data allow the application of the rfb or chr rules, which do not lead to a continuous reduction in the catch advice. A single year of length data can be enough to move away from the rb rule to either the rfb or chr rule.
@@ -87,7 +619,7 @@ The Category 3 empirical harvest control rules (rfb/rb/chr) were tested for a wi
 
 
 <details>
-    
+
 <summary>
 
 #### What to do if the estimated reference values change over time?
@@ -147,7 +679,7 @@ where $\gamma$ links the natural mortality $M$ to fishing mortality $F$ as the p
 
 The function for the calculation of the reference length in the `cat3advice` R package (`Lref()`) includes an argument (`Mk`) to change the $M/k$ ratio to any user-defined value.
 
-*References* 
+*References*
 
 * Jardim, E., Azevedo, M., and Brites, N. M. 2015. Harvest control rules for data-limited stocks using length-based reference points and survey biomass indices. Fisheries Research, 171: 12–19. <https://doi.org/10.1016/j.fishres.2014.11.013>
 
@@ -160,9 +692,9 @@ The function for the calculation of the reference length in the `cat3advice` R p
 
 ### Questions on biomass indices:
 <details>
-    
-<summary>  
-    
+
+<summary>
+
 #### What to do if the biomass index trigger ($I_\text{trigger}$) value changes over time?
 
 </summary>
@@ -177,7 +709,7 @@ $$b = \text{min} \left( 1, \frac{I_{y-1}}{I_\text{trigger}} \right)$$
 
 where the current biomass index value ($I_{y-1}$) is compared to a trigger value ($I_\text{trigger}$). If the most recent biomass index value falls below $I_\text{trigger}$, the biomass safeguard reduces the advised catch. In the absence of further information, $I_\text{trigger}$ is generically defined based on lowest observed biomass index value ($I_\text{trigger}= 1.4I_\text{loss}$).
 
-During the first application of the rfb/rb/chr rules, $I_\text{loss}$ is typically defined as the biomass index value in a specific historical year. In subsequent applications of the rfb/rb/chr rule, $I_\text{loss}$ (or $F_{proxy, MSY}$) should *NOT* be re-defined with biomass index values from new data years. Therefore, the reference values will stay constant as long as the historical biomass index time series is unchanged. 
+During the first application of the rfb/rb/chr rules, $I_\text{loss}$ is typically defined as the biomass index value in a specific historical year. In subsequent applications of the rfb/rb/chr rule, $I_\text{loss}$ (or $F_{proxy, MSY}$) should *NOT* be re-defined with biomass index values from new data years. Therefore, the reference values will stay constant as long as the historical biomass index time series is unchanged.
 However, some biomass indices are derived by modelling or standardising survey data. This means that the historical biomass index time series may change with additional years of data. In this case, the calculation of $F_{proxy,MSY}$ should be updated from the same historical reference period and $I_\text{trigger}$ should be based on the new value for $I_\text{loss}$ from the same historical reference year (defined during the first application of the rfb/rb/chr rule). The R package `cat3advice` allows the definition of $I_\text{trigger}$ based on a reference year (see the [package vignette](https://github.com/shfischer/cat3advice/blob/main/vignettes/cat3advice.md#biomass-safeguard-b) for more details):
 
 ```
@@ -303,7 +835,7 @@ However, it should be ensured that there is consistency in the length data over 
 
 </summary>
 
-The length data used should be representative of the underlying stock and fishery and the gears should ideally cover the entire fishery. 
+The length data used should be representative of the underlying stock and fishery and the gears should ideally cover the entire fishery.
 
 If data from a new gear become available, but the gear has only a small or negligible contribution to the total catch, there is likely no need to include it. If the contribution is a major part of the fishery, then the previous use of the length data may be questioned.
 
@@ -325,14 +857,14 @@ For the rfb rule, including new length data is likely more straightforward becau
 <details>
 
 <summary>
-    
+
 #### Can survey length data be used instead of catch length data for stocks with sparse catch length data (e.g. only landings or no landing nor discard length data)?
 
 </summary>
 
-Some work on this issue was presented at WKLIFE XII (ICES, 2023). The conclusion was that it might be possible to use survey length data as a proxy if no or insufficient (commercial) length data are available. The survey length distributions should be representative of fisheries catch length distribution. Therefore, the length at first capture $L_c$ should still be estimated from catch data, because the $L_c$ from survey data might be too low and bias the reference length $L_{F=M}$. Furthermore, survey length distributions should also cover large individual lengths. It should be noted that the reference point $L_{F=M}$ is based on the assumption of knife-edged, asymptotic fisheries selectivity. 
+Some work on this issue was presented at WKLIFE XII (ICES, 2023). The conclusion was that it might be possible to use survey length data as a proxy if no or insufficient (commercial) length data are available. The survey length distributions should be representative of fisheries catch length distribution. Therefore, the length at first capture $L_c$ should still be estimated from catch data, because the $L_c$ from survey data might be too low and bias the reference length $L_{F=M}$. Furthermore, survey length distributions should also cover large individual lengths. It should be noted that the reference point $L_{F=M}$ is based on the assumption of knife-edged, asymptotic fisheries selectivity.
 
-*References* 
+*References*
 
 * ICES. 2023. Workshop on the Development of Quantitative Assessment Methodologies based on Life-history traits, exploitation characteristics, and other relevant parameters for data-limited stocks (WKLIFE XII). ICES Scientific Reports. 5:103. 111 pp. <https://doi.org/10.17895/ices.pub.24581343>
 
@@ -420,7 +952,7 @@ For some species (e.g. very slow-growing species), changes in the length may occ
 
 Exactly what and how data are presented in an advice sheet is outside the scope of WKLIFE.
 
-For considerations on pooling length data, see question "[Can length data be pooled from several years?](#can-length-data-be-pooled-from-several-years)". If length data are pooled, WKLIFE suggests that the points in the length indicator plot are not linked because they do not represent a continuous time series. The same applies if there are gaps in the time series. Different metrics (e.g. annual values and pooled data) should ideally not be shown in the same figure. 
+For considerations on pooling length data, see question "[Can length data be pooled from several years?](#can-length-data-be-pooled-from-several-years)". If length data are pooled, WKLIFE suggests that the points in the length indicator plot are not linked because they do not represent a continuous time series. The same applies if there are gaps in the time series. Different metrics (e.g. annual values and pooled data) should ideally not be shown in the same figure.
 
 
 *Question source*: WGEF to WKLIFE XIII 2024
@@ -498,9 +1030,9 @@ The previous 2 over 3 rule calculated catch advice based on the trend from a bio
 
 The ICES technical guidelines recommend the implementation of the rfb rule with a biennial advice interval ([ICES, 2022](https://doi.org/10.17895/ices.advice.19801564)). WKLIFE XI ([ICES, 2023](https://doi.org/10.17895/ices.pub.22140260)) was asked if the rfb rule could be applied on an annual basis and concluded that this is unlikely to increase the risk of stock depletion but has the undesirable feature of reducing the long-term catch and should only be used in exceptional cases when asked for by ICES advice requesters ([ICES, 2023](https://doi.org/10.17895/ices.pub.22140260), Section 2.2.4.1, page 21). Other advice intervals (from one to five years) were included in the generic testing of the rfb rule (Fischer et al., [2021a](https://doi.org/10.1093/icesjms/fsab018),[b](https://doi.org/10.1093/icesjms/fsab169)) but the biennial advice interval appeared to work best. Longer advice intervals can reduce the reactivity of the rfb rule and may increase the risk of stock depletion because the catch cannot be reduced fast enough.
 
-*References* 
+*References*
 
-* Fischer, S. H., De Oliveira, J. A. A., Mumford, J. D., & Kell, L. T. 2021a. Using a genetic algorithm to optimize a data-limited catch rule. ICES Journal of Marine Science, 78: 1311–1323. <https://doi.org/10.1093/icesjms/fsab018> 
+* Fischer, S. H., De Oliveira, J. A. A., Mumford, J. D., & Kell, L. T. 2021a. Using a genetic algorithm to optimize a data-limited catch rule. ICES Journal of Marine Science, 78: 1311–1323. <https://doi.org/10.1093/icesjms/fsab018>
 
 * Fischer, S. H., De Oliveira, J. A. A., Mumford, J. D., & Kell, L. T. 2021b. Application of explicit precautionary principles in data-limited fisheries management. ICES Journal of Marine Science, 78: 2931–2942. <https://doi.org/10.1093/icesjms/fsab169>
 
@@ -540,7 +1072,7 @@ WKLIFE is not in the position to decide whether catch or landings advice is prod
 
 <summary>
 
-#### Is the new rfb rule appropriate given the sensitivity of simulation outputs and estimated risk to a number of starting specification? Are the simulations wide enough? 
+#### Is the new rfb rule appropriate given the sensitivity of simulation outputs and estimated risk to a number of starting specification? Are the simulations wide enough?
 
 </summary>
 
