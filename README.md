@@ -10,7 +10,7 @@ However, WKLIFE XIII in 2024 reviewed these questions, and added new questions a
 
 The ICES technical guidelines for data-limited methods are available from:
 
-> ICES. 2024. ICES Guidelines - Advice rules for stocks in category 2 and 3. Version 2. ICES Guidelines and Policies - Advice Technical Guidelines. 30 pp. <https://doi.org/10.17895/ices.pub.26056306>
+> ICES. 2025. ICES Guidelines - Advice rules for stocks in category 2 and 3. Version 3. ICES Guidelines and Policies - Advice Technical Guidelines. 31 pp. <https://doi.org/10.17895/ices.pub.28506179>
 
 ## Category 2
 
@@ -55,9 +55,7 @@ are present.
   Fisheries Research, 275, p.107010.
   https://doi.org/10.1016/j.fishres.2024.107010
 
-* ICES. 2022. ICES technical guidance for harvest control rules and stock
-  assessments for stocks in categories 2 and 3. ICES Technical Guidelines.
-  Report. https://doi.org/10.17895/ices.advice.19801564.v2
+* ICES. 2025. ICES Guidelines - Advice rules for stocks in category 2 and 3. Version 3. ICES Guidelines and Policies - Advice Technical Guidelines. 31 pp. <https://doi.org/10.17895/ices.pub.28506179>
 
 * Mildenberger, T. K., A. Kokkalis, and C. W. Berg. 2024. Guidelines for the
   stochastic production model in continuous time (SPiCT).
@@ -926,7 +924,7 @@ The length of first capture $L_c$ of the total catch cannot easily be estimated 
 
 </summary>
 
-The ICES technical guidelines ([ICES, 2024](https://doi.org/10.17895/ices.pub.26056306)) recommend pooling of length data over several years for the estimation of length reference points, such as $L_c$ (which in turn is used in the calculation of the reference length $L_{F=M}$). This can reduce the impact of noise in the data and give more reliable estimates.
+The ICES technical guidelines ([ICES, 2025](https://doi.org/10.17895/ices.pub.28506179)) recommend pooling of length data over several years for the estimation of length reference points, such as $L_c$ (which in turn is used in the calculation of the reference length $L_{F=M}$). This can reduce the impact of noise in the data and give more reliable estimates.
 
 However, component $f$ of the rfb rule based on the mean catch length, should generally be estimated with annual data so that changes in the fishing pressure can be observed. This also makes sure that the latest signal from the length data is used.
 
@@ -934,7 +932,7 @@ For some species (e.g. very slow-growing species), changes in the length may occ
 
 *References*
 
-* ICES. 2024. ICES Guidelines - Advice rules for stocks in category 2 and 3. Version 2. ICES Guidelines and Policies - Advice Technical Guidelines. 30 pp. <https://doi.org/10.17895/ices.pub.26056306>
+* ICES. 2025. ICES Guidelines - Advice rules for stocks in category 2 and 3. Version 3. ICES Guidelines and Policies - Advice Technical Guidelines. 31 pp. <https://doi.org/10.17895/ices.pub.28506179>
 
 *Question source*: WGEF to WKLIFE XIII 2024
 
@@ -1028,7 +1026,7 @@ The previous 2 over 3 rule calculated catch advice based on the trend from a bio
 
 </summary>
 
-The ICES technical guidelines recommend the implementation of the rfb rule with a biennial advice interval ([ICES, 2022](https://doi.org/10.17895/ices.advice.19801564)). WKLIFE XI ([ICES, 2023](https://doi.org/10.17895/ices.pub.22140260)) was asked if the rfb rule could be applied on an annual basis and concluded that this is unlikely to increase the risk of stock depletion but has the undesirable feature of reducing the long-term catch and should only be used in exceptional cases when asked for by ICES advice requesters ([ICES, 2023](https://doi.org/10.17895/ices.pub.22140260), Section 2.2.4.1, page 21). Other advice intervals (from one to five years) were included in the generic testing of the rfb rule (Fischer et al., [2021a](https://doi.org/10.1093/icesjms/fsab018),[b](https://doi.org/10.1093/icesjms/fsab169)) but the biennial advice interval appeared to work best. Longer advice intervals can reduce the reactivity of the rfb rule and may increase the risk of stock depletion because the catch cannot be reduced fast enough.
+The ICES technical guidelines recommend the implementation of the rfb rule with a biennial advice interval ([ICES, 2025](https://doi.org/10.17895/ices.advice.28506179)). WKLIFE XI ([ICES, 2023](https://doi.org/10.17895/ices.pub.22140260)) was asked if the rfb rule could be applied on an annual basis and concluded that this is unlikely to increase the risk of stock depletion but has the undesirable feature of reducing the long-term catch and should only be used in exceptional cases when asked for by ICES advice requesters ([ICES, 2023](https://doi.org/10.17895/ices.pub.22140260), Section 2.2.4.1, page 21). Other advice intervals (from one to five years) were included in the generic testing of the rfb rule (Fischer et al., [2021a](https://doi.org/10.1093/icesjms/fsab018),[b](https://doi.org/10.1093/icesjms/fsab169)) but the biennial advice interval appeared to work best. Longer advice intervals can reduce the reactivity of the rfb rule and may increase the risk of stock depletion because the catch cannot be reduced fast enough.
 
 *References*
 
@@ -1036,9 +1034,9 @@ The ICES technical guidelines recommend the implementation of the rfb rule with 
 
 * Fischer, S. H., De Oliveira, J. A. A., Mumford, J. D., & Kell, L. T. 2021b. Application of explicit precautionary principles in data-limited fisheries management. ICES Journal of Marine Science, 78: 2931–2942. <https://doi.org/10.1093/icesjms/fsab169>
 
-* ICES. 2022. ICES technical guidance for harvest control rules and stock assessments for stocks in categories 2 and 3. In Report of ICES advisory committee, 2022. ICES advice 2022, section 16.4.11. 20 pp. International Council for the Exploration of the Sea. <https://doi.org/10.17895/ices.advice.19801564>
-
 * ICES. 2023. Eleventh Workshop on the Development of Quantitative Assessment Methodologies based on LIFE-history traits, exploitation characteristics, and other relevant parameters for data-limited stocks (WKLIFE XI). ICES Scientific Reports. 5:21. 74 pp. <https://doi.org/10.17895/ices.pub.22140260>
+
+* ICES. 2025. ICES Guidelines - Advice rules for stocks in category 2 and 3. Version 3. ICES Guidelines and Policies - Advice Technical Guidelines. 31 pp. <https://doi.org/10.17895/ices.pub.28506179>
 
 *Question source*: WGDEEP for WKLIFE XII 2023
 
@@ -1096,13 +1094,13 @@ The implementation of the new WKLIFE X methods for Category 3 stocks (rfb/rb/chr
 
 -   ICES. 2019. Ninth Workshop on the Development of Quantitative Assessment Methodologies based on LIFE-history traits, exploitation characteristics, and other relevant parameters for data-limited stocks (WKLIFE IX). ICES Scientific reports, 1:131. <https://doi.org/10.17895/ices.pub.5550>
 
--   ICES. 2020a. Tenth Workshop on the Development of Quantitative Assessment Methodologies based on LIFE-history traits, exploitation characteristics, and other relevant parameters for data-limited stocks (WKLIFE X). ICES Scientific reports, 2:98, 72 pp. <https://doi.org/10.17895/ices.pub.5985>
-
--   ICES. 2022. ICES technical guidance for harvest control rules and stock assessments for stocks in categories 2 and 3. In Report of ICES advisory committee, 2022. ICES advice 2022, section 16.4.11. 20 pp. <https://doi.org/10.17895/ices.advice.19801564>
+-   ICES. 2020. Tenth Workshop on the Development of Quantitative Assessment Methodologies based on LIFE-history traits, exploitation characteristics, and other relevant parameters for data-limited stocks (WKLIFE X). ICES Scientific reports, 2:98, 72 pp. <https://doi.org/10.17895/ices.pub.5985>
 
 -   ICES. 2023a. Eleventh Workshop on the Development of Quantitative Assessment Methodologies based on LIFE-history traits, exploitation characteristics, and other relevant parameters for data-limited stocks (WKLIFE XI). ICES Scientific Reports. 5:21. 74 pp. <https://doi.org/10.17895/ices.pub.22140260>
 
 -   ICES. 2023b. Workshop on the Development of Quantitative Assessment Methodologies based on Life-history traits, exploitation characteristics, and other relevant parameters for data-limited stocks (WKLIFE XII). ICES Scientific Reports. 5:103. 111 pp. <https://doi.org/10.17895/ices.pub.24581343>
+
+-   ICES. 2025. ICES Guidelines - Advice rules for stocks in category 2 and 3. Version 3. ICES Guidelines and Policies - Advice Technical Guidelines. 31 pp. <https://doi.org/10.17895/ices.pub.28506179>
 
 *Question source*: Scottish Fishermen's Federation for WKLIFE XII 2023
 
